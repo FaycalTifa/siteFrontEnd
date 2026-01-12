@@ -1,0 +1,513 @@
+<!-- Header -->
+<app-header></app-header>
+<router-outlet></router-outlet>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Commerce - Accueil</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Variables CSS */
+    :root {
+      --primary-color: #2c5530;
+      --secondary-color: #4a7c59;
+      --accent-color: #8fb996;
+      --text-dark: #2d3748;
+      --text-light: #4a5568;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+      --gradient: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+      --light-gradient: linear-gradient(135deg, #4a7c59 0%, #8fb996 100%);
+      --button-gradient: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --border-radius: 16px;
+    }
+
+    /* Reset et Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--light-bg);
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Classes d'Animation */
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .animate-pulse-slow {
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .animate-slide-in-left {
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      background: var(--light-gradient);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      color: var(--text-dark);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content h2 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      color: var(--primary-color);
+    }
+
+    .hero-content h2 span {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      font-size: 1.4rem;
+      margin-bottom: 2.5rem;
+      color: var(--text-light);
+      max-width: 500px;
+      font-weight: 500;
+    }
+
+    /* BOUTON CORRIGÉ - Maintenant visible */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--button-gradient);
+      color: white;
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      border: none;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #4a7c59 0%, #2c5530 100%);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: var(--shadow-hover);
+      color: white;
+    }
+
+    /* Indicateurs de confiance */
+    .trust-indicators {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.2rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      min-width: 130px;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    .indicator .stars {
+      font-size: 1.5rem;
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+    }
+
+    .indicator .icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .indicator small {
+      color: var(--text-light);
+      font-weight: 600;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Hero Gallery */
+    .hero-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1.5rem;
+      height: 500px;
+    }
+
+    .hero-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 3px solid white;
+    }
+
+    .hero-gallery img:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .hero-gallery img:nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+      animation: float 6s ease-in-out infinite 0.5s;
+    }
+
+    .hero-gallery img:nth-child(3) {
+      grid-column: 2;
+      grid-row: 2;
+      animation: float 7s ease-in-out infinite 1s;
+    }
+
+    .hero-gallery img:hover {
+      transform: scale(1.05);
+      z-index: 1;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 6rem 2rem;
+      background: var(--white);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid #e2e8f0;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent-color);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--light-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    .feature-card p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+      }
+
+      .hero-content h2 {
+        font-size: 2.8rem;
+      }
+
+      .hero-gallery {
+        height: 400px;
+      }
+
+      .trust-indicators {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h2 {
+        font-size: 2.2rem;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+
+      .hero-gallery {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .hero-gallery img:nth-child(1),
+      .hero-gallery img:nth-child(2),
+      .hero-gallery img:nth-child(3) {
+        grid-column: 1;
+        grid-row: auto;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-indicators {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .indicator {
+        min-width: 150px;
+      }
+
+      .btn-primary {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content animate-slide-in-left">
+      <h2>Bienvenue chez FOCUS SUPLY TRANING</h2>
+      <p>
+        L'Intelligence Émotionnelle (IE) est la capacité de reconnaître, comprendre et gérer ses propres émotions,
+        tout en composant avec celles des autres. C'est un atout majeur pour la réussite personnelle et professionnelle,
+        souvent résumé en cinq piliers clés : <b>La Conscience de soi, L'Auto-régulation, La Motivation, L'Empathie, Les Aptitudes sociales</b>
+      </p>
+
+
+      <!-- BOUTON MAINTENANT PARFAITEMENT VISIBLE -->
+      <a href="/produits-list" class="btn-primary animate-pulse-slow">
+        <i class="fas fa-shopping-bag"></i>
+        Découvrir nos produits
+      </a>
+
+      <!-- Indicateurs de confiance -->
+      <div class="trust-indicators">
+        <div class="indicator">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <small>4.9/5<br>250+ avis</small>
+        </div>
+        <div class="indicator">
+          <div class="icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <small>Livraison<br>24/48h</small>
+        </div>
+        <div class="indicator">
+          <div class="icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <small>Paiement<br>Sécurisé</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-gallery">
+      <img src="assets/images/image1.png" alt="Notre boutique">
+      <img src="assets/images/image2.png" alt="Notre boutique">
+      <img src="assets/images/image3.png" alt="Notre boutique">
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <div class="section-title animate-fade-in-up">
+    <h2>Pourquoi Nous Choisir ?</h2>
+    <p>Découvrez ce qui fait la différence chez Mon Commerce</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card animate-fade-in-up">
+      <div class="feature-icon">
+        <i class="fas fa-award"></i>
+      </div>
+      <h3>Qualité Premium</h3>
+      <p>Tous nos produits sont rigoureusement sélectionnés pour leur excellence et leur durabilité. Nous garantissons la satisfaction à 100%.</p>
+    </div>
+
+    <div class="feature-card animate-fade-in-up" style="animation-delay: 0.2s;">
+      <div class="feature-icon">
+        <i class="fas fa-truck"></i>
+      </div>
+      <h3>Livraison Express</h3>
+      <p>Recevez vos commandes en 24-48h avec notre service de livraison rapide et sécurisé. Suivi en temps réel inclus.</p>
+    </div>
+
+    <div class="feature-card animate-fade-in-up" style="animation-delay: 0.4s;">
+      <div class="feature-icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <h3>Support 7j/7</h3>
+      <p>Notre équipe dédiée est disponible pour vous accompagner à tout moment. Réponse sous 2 heures garantie.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Animation au défilement
+  document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observer les éléments animés
+    document.querySelectorAll('.animate-fade-in-up').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  });
+</script>
+</body>
+</html>
+
+
+<app-footer></app-footer>

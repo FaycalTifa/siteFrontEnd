@@ -1,0 +1,102 @@
+<app-header></app-header>
+<router-outlet></router-outlet>
+
+<div>
+
+  <!-- Contacts Stylisés -->
+  <section class="contacts-section">
+    <div class="container">
+      <h2 class="section-title">Contactez-Nous</h2>
+      <p class="section-subtitle">Restons en contact pour mieux vous servir</p>
+
+      <div class="contacts-grid">
+        <!-- Téléphone -->
+        <div class="contact-card">
+          <div class="contact-icon phone">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Téléphone</h3>
+            <p>+33 1 23 45 67 89</p>
+            <span class="contact-note">Lun-Ven: 8h-18h</span>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="contact-card">
+          <div class="contact-icon email">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Email</h3>
+            <!-- CORRECTION DE L'EMAIL -->
+            <p>contact&#64;toyago-agro.com</p>
+            <span class="contact-note">Réponse sous 24h</span>
+          </div>
+        </div>
+
+        <!-- Adresse -->
+        <div class="contact-card">
+          <div class="contact-icon address">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Adresse</h3>
+            <p>123 Rue de l'Agriculture<br>75000 Paris, France</p>
+            <span class="contact-note">Visite sur rendez-vous</span>
+          </div>
+        </div>
+
+        <!-- Réseaux Sociaux -->
+        <div class="contact-card social">
+          <div class="contact-icon social">
+            <i class="fas fa-share-alt"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Réseaux Sociaux</h3>
+            <div class="social-links">
+              <a href="#" class="social-link whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+              </a>
+              <a href="#" class="social-link facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+              </a>
+              <a href="#" class="social-link instagram">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+              </a>
+              <a href="#" class="social-link linkedin">
+                <i class="fab fa-linkedin-in"></i>
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Prêt à Découvrir Nos Produits ?</h2>
+      <p>Rejoignez la famille TOYAGO AGRO BUSINESS dès aujourd'hui</p>
+      <div class="cta-buttons">
+        <!-- REMPLACER routerLink PAR DES LIENS SIMPLES -->
+        <a href="/produits-list" class="btn btn-primary">
+          <i class="fas fa-shopping-bag"></i>
+          Voir nos produits
+        </a>
+        <a href="/contact" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i>
+          Nous contacter
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<app-footer></app-footer>

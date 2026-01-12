@@ -1,0 +1,155 @@
+.site-header {
+  background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+  color: white;
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #ffd700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .company-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+      color: white;
+    }
+  }
+
+  .main-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      &.active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      &.admin-btn {
+        background: rgba(255, 215, 0, 0.2);
+        border: 2px solid #ffd700;
+
+        &:hover {
+          background: rgba(255, 215, 0, 0.3);
+        }
+      }
+    }
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+
+    span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+  }
+
+  .mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+    flex-direction: column;
+    padding: 1rem 0;
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+    &.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      display: flex;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      text-align: center;
+      font-weight: 500;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    .main-nav {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .logo-section {
+      .company-name {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo-section {
+      .logo {
+        font-size: 1.5rem;
+      }
+      .company-name {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

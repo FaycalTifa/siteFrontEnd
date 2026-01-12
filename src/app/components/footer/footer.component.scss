@@ -1,0 +1,32 @@
+.site-footer {
+  background: #2d3748;
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: auto;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: #cbd5e0;
+  }
+
+  a {
+    color: #8fb996;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+    font-weight: 500;
+
+    &:hover {
+      color: #4a7c59;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<header class="site-header">
+  <div class="container">
+    <!-- Logo et Nom de l'entreprise -->
+    <div class="logo-section">
+      <div class="logo">FOCUS SUPLY TRANING</div>
+      <h1 class="company-name"></h1>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <a routerLink="/" class="nav-link" routerLinkActive="active">Accueil</a>
+      <a routerLink="/about" class="nav-link" routerLinkActive="active">À propos</a>
+      <a routerLink="/produits-list" class="nav-link" routerLinkActive="active">Produits</a>
+      <a routerLink="/contact" class="nav-link" routerLinkActive="active">Contact</a>
+      <!-- ✅ Route cohérente -->
+      <a routerLink="/login" class="nav-link admin-btn" routerLinkActive="active">Publier</a>
+    </nav>
+
+    <!-- Menu mobile -->
+    <button class="mobile-menu-btn" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Menu mobile dropdown -->
+  <div class="mobile-nav" [class.active]="isMenuOpen">
+    <a routerLink="/" (click)="toggleMenu()">Accueil</a>
+    <a routerLink="/about" (click)="toggleMenu()">À propos</a>
+    <a routerLink="/produits" (click)="toggleMenu()">Produits</a>
+    <a routerLink="/contact" (click)="toggleMenu()">Contact</a>
+    <!-- Changer vers /login -->
+    <a routerLink="/logins" (click)="toggleMenu()">Admin</a>
+  </div>
+</header>

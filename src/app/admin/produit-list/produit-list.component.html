@@ -1,0 +1,76 @@
+<section class="produits-section">
+  <div class="container">
+
+    <div class="section-header">
+      <h1>Nos Produits Agricoles</h1>
+      <p>Découvrez notre sélection de produits frais et équipements</p>
+    </div>
+
+    <!-- Filtres -->
+    <div class="filters-container">
+      <div class="search-bar">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (input)="onSearchChange()"
+          placeholder="Rechercher un produit..." />
+      </div>
+
+      <div class="category-filters">
+        <button
+          class="filter-btn"
+          [class.active]="selectedCategory === 'all'"
+          (click)="filterByCategory('all')">
+          Tous
+        </button>
+
+        <button
+          *ngFor="let category of categories"
+          class="filter-btn"
+          [class.active]="selectedCategory === category"
+          (click)="filterByCategory(category)">
+          {{ category }}
+        </button>
+      </div>
+    </div>
+
+    <div class="loading-state" *ngIf="isLoading">
+      <div class="spinner"></div>
+      <p>Chargement des produits...</p>
+    </div>
+
+    <div class="produits-grid" *ngIf="!isLoading">
+      <div class="produit-card" *ngFor="let produit of filteredProduits">
+        <div class="produit-image" (click)="openImage(produit.imageUrl)">
+          <img [src]="produit.imageUrl" [alt]="produit.nom" (error)="onImageError($event)" loading="lazy" />
+        </div>
+
+        <div class="produit-info">
+          <span class="produit-category">{{ produit.categorie }}</span>
+          <h3 class="produit-name">{{ produit.nom }}</h3>
+          <p class="produit-description">{{ produit.description }}</p>
+          <div class="produit-pricing">
+            <span class="current-price">{{ produit.prix  | currency:'FCFA ' }}</span>
+          </div>
+          <div class="produit-stock">
+            <span [class.in-stock]="produit.enStock" [class.out-stock]="!produit.enStock">
+              {{ produit.enStock ? 'En stock' : 'Rupture' }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-results" *ngIf="!isLoading && filteredProduits.length === 0">
+      <h3>Aucun produit trouvé</h3>
+      <p>Essayez de modifier vos filtres ou votre recherche.</p>
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div class="image-lightbox" *ngIf="selectedImageUrl" (click)="closeImage()">
+    <img [src]="selectedImageUrl" alt="Produit" (click)="$event.stopPropagation()" />
+    <button class="close-lightbox" (click)="closeImage()">×</button>
+  </div>
+</section>
