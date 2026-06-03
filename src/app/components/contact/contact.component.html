@@ -1,76 +1,176 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
 
-<div>
-
-  <!-- Contacts Stylisés -->
-  <section class="contacts-section">
+<main>
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="hero-bg"></div>
     <div class="container">
-      <h2 class="section-title">Contactez-Nous</h2>
-      <p class="section-subtitle">Restons en contact pour mieux vous servir</p>
+      <div class="hero-content animate-fade-in-up">
+        <span class="hero-badge">
+          <i class="fas fa-comments"></i>
+          Contactez-nous
+        </span>
+        <h1 class="hero-title">
+          Parlons de votre <span class="highlight">projet</span>
+        </h1>
+        <p class="hero-description">
+          Notre équipe est à votre écoute pour répondre à toutes vos questions et vous accompagner dans vos projets
+        </p>
+      </div>
+    </div>
+    <div class="hero-wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+        <path fill="#ffffff" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+      </svg>
+    </div>
+  </section>
 
-      <div class="contacts-grid">
-        <!-- Téléphone -->
-        <div class="contact-card">
-          <div class="contact-icon phone">
-            <i class="fas fa-phone"></i>
+  <!-- Formulaire de contact + Infos -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Formulaire -->
+        <div class="contact-form-wrapper animate-slide-in-left">
+          <div class="form-header">
+            <h2>Envoyez-nous un message</h2>
+            <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais</p>
           </div>
-          <div class="contact-info">
-            <h3>Téléphone</h3>
-            <p>+33 1 23 45 67 89</p>
-            <span class="contact-note">Lun-Ven: 8h-18h</span>
-          </div>
+
+          <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>
+                  <i class="fas fa-user"></i>
+                  Nom complet
+                </label>
+                <input type="text"
+                       [(ngModel)]="formData.name"
+                       name="name"
+                       required
+                       placeholder="Votre nom"
+                       class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label>
+                  <i class="fas fa-envelope"></i>
+                  Email
+                </label>
+                <input type="email"
+                       [(ngModel)]="formData.email"
+                       name="email"
+                       required
+                       email
+                       placeholder="votre@email.com"
+                       class="form-control">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>
+                  <i class="fas fa-phone"></i>
+                  Téléphone
+                </label>
+                <input type="tel"
+                       [(ngModel)]="formData.phone"
+                       name="phone"
+                       placeholder="+33 6 12 34 56 78"
+                       class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label>
+                  <i class="fas fa-tag"></i>
+                  Sujet
+                </label>
+                <select [(ngModel)]="formData.subject" name="subject" class="form-control">
+                  <option value="information">Demande d'information</option>
+                  <option value="formation">Formation</option>
+                  <option value="achats">Achats & Approvisionnements</option>
+                  <option value="partenariat">Partenariat</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>
+                <i class="fas fa-comment"></i>
+                Message
+              </label>
+              <textarea [(ngModel)]="formData.message"
+                        name="message"
+                        required
+                        rows="5"
+                        placeholder="Décrivez votre demande..."
+                        class="form-control"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" [disabled]="isSubmitting">
+              <i class="fas fa-paper-plane"></i>
+              {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}
+            </button>
+          </form>
         </div>
 
-        <!-- Email -->
-        <div class="contact-card">
-          <div class="contact-icon email">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div class="contact-info">
-            <h3>Email</h3>
-            <!-- CORRECTION DE L'EMAIL -->
-            <p>contact&#64;toyago-agro.com</p>
-            <span class="contact-note">Réponse sous 24h</span>
-          </div>
-        </div>
+        <!-- Informations de contact -->
+        <div class="contact-info-wrapper animate-slide-in-right">
+          <div class="info-card">
+            <h3>Informations de contact</h3>
+            <p>N'hésitez pas à nous contacter directement via les coordonnées ci-dessous</p>
 
-        <!-- Adresse -->
-        <div class="contact-card">
-          <div class="contact-icon address">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div class="contact-info">
-            <h3>Adresse</h3>
-            <p>123 Rue de l'Agriculture<br>75000 Paris, France</p>
-            <span class="contact-note">Visite sur rendez-vous</span>
-          </div>
-        </div>
+            <div class="info-items">
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-detail">
+                  <h4>Adresse</h4>
+                  <p>Nkwame N'Krumah<br>Ouagadougou, Burkina Faso</p>
+                </div>
+              </div>
 
-        <!-- Réseaux Sociaux -->
-        <div class="contact-card social">
-          <div class="contact-icon social">
-            <i class="fas fa-share-alt"></i>
-          </div>
-          <div class="contact-info">
-            <h3>Réseaux Sociaux</h3>
-            <div class="social-links">
-              <a href="#" class="social-link whatsapp">
-                <i class="fab fa-whatsapp"></i>
-                <span>WhatsApp</span>
-              </a>
-              <a href="#" class="social-link facebook">
-                <i class="fab fa-facebook-f"></i>
-                <span>Facebook</span>
-              </a>
-              <a href="#" class="social-link instagram">
-                <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
-              </a>
-              <a href="#" class="social-link linkedin">
-                <i class="fab fa-linkedin-in"></i>
-                <span>LinkedIn</span>
-              </a>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="info-detail">
+                  <h4>Téléphone</h4>
+                  <p>+226 78 04 80 10</p>
+                  <p>+226 05 24 15 15</p>
+                  <span class="info-note">Lun-Ven: 8h-18h</span>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info-detail">
+                  <h4>Email</h4>
+                  <p>minedevo.supply&#64;focus-supply.com</p>
+                  <span class="info-note">Réponse sous 24h</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-section">
+              <h4>Suivez-nous</h4>
+              <div class="social-links">
+                <a href="#" class="social-link facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link linkedin">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link whatsapp">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -78,25 +178,78 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta-section">
+  <!-- Carte Google Maps -->
+  <!-- Carte Google Maps avec votre localisation -->
+  <section class="map-section">
     <div class="container">
-      <h2>Prêt à Découvrir Nos Produits ?</h2>
-      <p>Rejoignez la famille TOYAGO AGRO BUSINESS dès aujourd'hui</p>
-      <div class="cta-buttons">
-        <!-- REMPLACER routerLink PAR DES LIENS SIMPLES -->
-        <a href="/produits-list" class="btn btn-primary">
-          <i class="fas fa-shopping-bag"></i>
-          Voir nos produits
-        </a>
-        <a href="/contact" class="btn btn-secondary">
-          <i class="fas fa-envelope"></i>
-          Nous contacter
-        </a>
+      <div class="map-header">
+        <h2>Notre localisation</h2>
+        <p>Venez nous rencontrer dans nos bureaux</p>
+      </div>
+      <div class="map-container">
+        <!-- REMPLACEZ CE CODE PAR VOTRE CODE GOOGLE MAPS -->
+        <!-- Exemple pour Ouagadougou, Burkina Faso -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.945385249982!2d-1.542574!3d12.371427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe2eb1c2f4b5d5b5%3A0x9f8b5c5e5d5b5c5e!2sOuagadougou!5e0!3m2!1sfr!2sbf!4v1700000000000!5m2!1sfr!2sbf"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
     </div>
   </section>
 
-</div>
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-header">
+        <span class="faq-badge">FAQ</span>
+        <h2>Questions fréquentes</h2>
+        <p>Tout ce que vous devez savoir avant de nous contacter</p>
+      </div>
 
-<app-footer></app-footer>
+      <div class="faq-grid">
+        <div class="faq-item" *ngFor="let faq of faqs; let i = index"
+             [class.active]="activeFaq === i"
+             (click)="toggleFaq(i)">
+          <div class="faq-question">
+            <i class="fas fa-question-circle"></i>
+            <span>{{ faq.question }}</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>{{ faq.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <div class="newsletter-icon">
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+        <h2>Restez informé</h2>
+        <p>Inscrivez-vous à notre newsletter pour recevoir nos actualités et offres spéciales</p>
+        <form class="newsletter-form" (ngSubmit)="onSubscribe()">
+          <input type="email"
+                 [(ngModel)]="newsletterEmail"
+                 name="newsletterEmail"
+                 placeholder="Votre adresse email"
+                 required>
+          <button type="submit">
+            <i class="fas fa-paper-plane"></i>
+            S'abonner
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+

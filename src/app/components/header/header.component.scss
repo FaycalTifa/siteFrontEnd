@@ -1,15 +1,25 @@
+// Variables
+$primary: #2c5530;
+$primary-light: #4a7c59;
+$secondary: #8fb996;
+$accent: #ffd700;
+$white: #ffffff;
+$shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
 .site-header {
-  background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
-  color: white;
-  padding: 1rem 0;
+  background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+  color: $white;
+  padding: 0.8rem 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+  box-shadow: $shadow;
+  backdrop-filter: blur(10px);
 
   .container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
@@ -17,60 +27,127 @@
     align-items: center;
   }
 
+  // Logo Section
   .logo-section {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    .logo {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #ffd700;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .company-name {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 0;
-      color: white;
-    }
-  }
-
-  .main-nav {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-
-    .nav-link {
-      color: white;
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
       text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-      position: relative;
+      transition: $transition;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-2px);
+        transform: scale(1.02);
       }
 
-      &.active {
-        background: rgba(255, 255, 255, 0.2);
+      .logo-image {
+        height: 45px;
+        width: auto;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
       }
 
-      &.admin-btn {
-        background: rgba(255, 215, 0, 0.2);
-        border: 2px solid #ffd700;
+      .logo-text {
+        display: flex;
+        flex-direction: column;
 
-        &:hover {
-          background: rgba(255, 215, 0, 0.3);
+        .logo-title {
+          font-size: 1.2rem;
+          font-weight: 800;
+          color: $accent;
+          letter-spacing: 1px;
+          line-height: 1.2;
+        }
+
+        .logo-subtitle {
+          font-size: 0.7rem;
+          font-weight: 600;
+          color: $white;
+          letter-spacing: 2px;
+          opacity: 0.9;
         }
       }
     }
   }
 
+  // Navigation Desktop
+  .main-nav {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: $white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      transition: $transition;
+      position: relative;
+
+      i {
+        font-size: 0.9rem;
+        transition: $transition;
+      }
+
+      span {
+        font-size: 0.9rem;
+      }
+
+      &:hover {
+        background: rgba($white, 0.15);
+        transform: translateY(-2px);
+
+        i {
+          transform: scale(1.1);
+        }
+      }
+
+      &.active {
+        background: rgba($accent, 0.2);
+        color: $accent;
+
+        i {
+          color: $accent;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 30px;
+          height: 3px;
+          background: $accent;
+          border-radius: 3px;
+        }
+      }
+
+      &.admin-btn {
+        background: rgba($accent, 0.15);
+        border: 1px solid rgba($accent, 0.5);
+
+        i {
+          color: $accent;
+        }
+
+        &:hover {
+          background: rgba($accent, 0.3);
+          border-color: $accent;
+        }
+
+        &.active {
+          background: rgba($accent, 0.3);
+          border-color: $accent;
+        }
+      }
+    }
+  }
+
+  // Mobile Menu Button
   .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -78,78 +155,158 @@
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    gap: 5px;
+    z-index: 1001;
 
     span {
       width: 25px;
-      height: 3px;
-      background: white;
-      margin: 3px 0;
-      transition: 0.3s;
+      height: 2.5px;
+      background: $white;
+      transition: $transition;
       border-radius: 2px;
+    }
+
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
     }
   }
 
+  // Mobile Navigation
   .mobile-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
     flex-direction: column;
-    padding: 1rem 0;
-    transform: translateY(-10px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 5rem 1.5rem 2rem;
+    transition: $transition;
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
 
     &.active {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-      display: flex;
+      right: 0;
     }
 
     a {
-      color: white;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: $white;
       text-decoration: none;
-      padding: 1rem 2rem;
-      text-align: center;
+      padding: 1rem;
+      border-radius: 12px;
       font-weight: 500;
-      transition: background 0.3s ease;
+      transition: $transition;
+      margin-bottom: 0.5rem;
+
+      i {
+        width: 25px;
+        font-size: 1.1rem;
+      }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba($white, 0.1);
+        transform: translateX(5px);
+      }
+
+      &.mobile-admin {
+        margin-top: 1rem;
+        background: rgba($accent, 0.15);
+        border: 1px solid rgba($accent, 0.5);
+
+        i {
+          color: $accent;
+        }
       }
     }
   }
+}
 
-  // Responsive
-  @media (max-width: 768px) {
-    .main-nav {
-      display: none;
-    }
+// Backdrop overlay for mobile menu
+.mobile-nav-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: $transition;
 
-    .mobile-menu-btn {
-      display: flex;
-    }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
 
-    .logo-section {
-      .company-name {
-        font-size: 1rem;
-      }
-    }
+// Responsive
+@media (max-width: 968px) {
+  .main-nav {
+    display: none !important;
   }
 
-  @media (max-width: 480px) {
-    .logo-section {
-      .logo {
-        font-size: 1.5rem;
-      }
-      .company-name {
-        font-size: 0.9rem;
-      }
-    }
+  .mobile-menu-btn {
+    display: flex !important;
   }
+
+  .logo-title {
+    font-size: 1rem !important;
+  }
+
+  .logo-subtitle {
+    font-size: 0.6rem !important;
+  }
+
+  .logo-image {
+    height: 35px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem !important;
+  }
+
+  .logo-title {
+    font-size: 0.85rem !important;
+  }
+
+  .logo-subtitle {
+    font-size: 0.5rem !important;
+  }
+
+  .logo-image {
+    height: 30px !important;
+  }
+}
+
+// Animation d'entrée
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.site-header {
+  animation: slideDown 0.5s ease-out;
 }

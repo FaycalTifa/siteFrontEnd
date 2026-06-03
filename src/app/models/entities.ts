@@ -13,17 +13,31 @@ export interface LoginResponse {
   message: string;
 }
 
-export interface Produit {
+// produit.model.ts
+export class Produit {
   id?: number;
-  nom: string;
-  description: string;
-  prix: number;
-  imageUrl: string;
-  categorie?: string; // ✅ Rendre optionnelle avec ?
-  enPromotion?: boolean;
-  prixPromotion?: number;
-  enStock?: boolean;
-  quantiteStock?: number;
+  nom: string = '';
+  description: string = '';
+  prix: number = 0;
+  imageUrl?: string;
+  categorie: string = '';
+  enPromotion: boolean = false;
+  prixPromotion?: number | null;
+  enStock: boolean = true;
+  quantiteStock: number = 0;
   dateCreation?: string;
   dateModification?: string;
+
+  // Nouveaux champs pour les formations
+  duree?: string = '';
+  type?: string = 'formation';
+  niveau?: string = 'Débutant';
+  prerequis?: string = '';
+  objectifs?: string = '';
+  programme?: string = '';
+  publicCible?: string = '';
+
+  constructor(data?: Partial<Produit>) {
+    Object.assign(this, data);
+  }
 }

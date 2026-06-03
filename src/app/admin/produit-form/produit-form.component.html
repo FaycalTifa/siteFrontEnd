@@ -1,204 +1,313 @@
 <div class="form-overlay" (click)="onCancel()">
   <div class="form-container" (click)="$event.stopPropagation()">
+
+    <!-- Header -->
     <div class="form-header">
-      <h2>{{ formTitle }}</h2>
+      <div class="header-icon">
+        <i class="fas fa-chalkboard-user"></i>
+      </div>
+      <div class="header-text">
+        <h2>{{ formTitle }}</h2>
+        <p>Créez et publiez une nouvelle formation</p>
+      </div>
       <button class="close-btn" (click)="onCancel()" aria-label="Fermer">
-        ×
+        <i class="fas fa-times"></i>
       </button>
+    </div>
+
+    <!-- Notification de succès -->
+    <div class="success-notification" *ngIf="showSuccessNotification">
+      <div class="notification-content">
+        <i class="fas fa-check-circle"></i>
+        <span>{{ successMessage }}</span>
+        <button class="notification-close" (click)="closeSuccessNotification()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
     </div>
 
     <form (ngSubmit)="onSubmit()" class="produit-form" #produitForm="ngForm">
 
-      <!-- Message de statut -->
-      <div *ngIf="message" class="message" [class.success]="isSuccess" [class.error]="!isSuccess">
-        <div class="message-content">
-          <i [class]="isSuccess ? 'fas fa-check-circle' : 'fas fa-exclamation-circle'"></i>
-          <span>{{ message }}</span>
-        </div>
-        <button *ngIf="!isSuccess" type="button" class="message-close" (click)="message = ''">
-          ×
-        </button>
+      <!-- Message d'erreur -->
+      <div *ngIf="message && !isSuccess" class="error-alert">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>{{ message }}</span>
+        <button type="button" class="alert-close" (click)="message = ''">×</button>
       </div>
 
-      <!-- Indicateur de chargement -->
+      <!-- Loading overlay -->
       <div *ngIf="isLoading" class="loading-overlay">
         <div class="spinner">
           <i class="fas fa-spinner fa-spin"></i>
         </div>
-        <p>Traitement en cours...</p>
+        <p>Enregistrement en cours...</p>
       </div>
 
-      <!-- Nom du produit -->
-      <div class="form-group">
-        <label for="nom" class="required">
-          Nom du produit
-        </label>
-        <input
-          type="text"
-          id="nom"
-          [(ngModel)]="produitData.nom"
-          name="nom"
-          placeholder="Ex: Tomates fraîches"
-          required
-          minlength="2"
-          maxlength="100"
-          #nomInput="ngModel"
-          [class.invalid]="nomInput.invalid && (nomInput.touched || isSubmitted)">
-
-        <div *ngIf="nomInput.invalid && (nomInput.touched || isSubmitted)" class="error-message">
-          <span *ngIf="nomInput.errors?.['required']">Le nom est obligatoire</span>
-          <span *ngIf="nomInput.errors?.['minlength']">Minimum 2 caractères</span>
-        </div>
-      </div>
-
-      <!-- Description -->
-      <div class="form-group">
-        <label for="description" class="required">
-          Description
-        </label>
-        <textarea
-          id="description"
-          [(ngModel)]="produitData.description"
-          name="description"
-          placeholder="Décrivez le produit (couleur, taille, qualité...)"
-          rows="4"
-          required
-          minlength="10"
-          maxlength="500"
-          #descInput="ngModel"
-          [class.invalid]="descInput.invalid && (descInput.touched || isSubmitted)"></textarea>
-
-        <div class="char-counter">
-          {{ produitData.description.length }}/500 caractères
+      <!-- Section 1: Informations générales -->
+      <div class="form-section">
+        <div class="section-title">
+          <i class="fas fa-info-circle"></i>
+          <h3>1. Informations générales</h3>
         </div>
 
-        <div *ngIf="descInput.invalid && (descInput.touched || isSubmitted)" class="error-message">
-          <span *ngIf="descInput.errors?.['required']">La description est obligatoire</span>
-          <span *ngIf="descInput.errors?.['minlength']">Minimum 10 caractères</span>
-        </div>
-      </div>
-
-      <!-- Prix -->
-      <div class="form-group">
-        <label for="prix" class="required">
-          Prix (€)
-        </label>
-        <div class="price-input">
+        <!-- Titre -->
+        <div class="form-group">
+          <label for="nom">
+            <i class="fas fa-heading"></i>
+            Titre de la formation <span class="required-star">*</span>
+          </label>
           <input
-            type="number"
-            id="prix"
-            [(ngModel)]="produitData.prix"
-            name="prix"
-            min="0"
-            max="1000000"
-            step="0.01"
-            placeholder="0.00"
+            type="text"
+            id="nom"
+            [(ngModel)]="produitData.nom"
+            name="nom"
+            placeholder="Ex: Maîtrisez l'Intelligence Émotionnelle"
             required
-            #prixInput="ngModel"
-            [class.invalid]="prixInput.invalid && (prixInput.touched || isSubmitted)">
-          <span class="currency">€</span>
-        </div>
-
-        <div *ngIf="prixInput.invalid && (prixInput.touched || isSubmitted)" class="error-message">
-          <span *ngIf="prixInput.errors?.['required']">Le prix est obligatoire</span>
-          <span *ngIf="prixInput.errors?.['min']">Le prix doit être positif</span>
-          <span *ngIf="prixInput.errors?.['max']">Prix maximum: 1 000 000 €</span>
-        </div>
-      </div>
-
-      <!-- Catégorie -->
-      <div class="form-group">
-        <label for="categorie">
-          Catégorie
-        </label>
-        <select
-          id="categorie"
-          [(ngModel)]="produitData.categorie"
-          name="categorie">
-          <option value="Formation">Formation</option>
-          <option value="Coaching">Coaching</option>
-          <option value="Evementiel">Evementiel</option>
-          <option value="Publicité">Publicité</option>
-          <option value="Produits frais">Produits frais</option>
-          <option value="Autre">Autre</option>
-        </select>
-      </div>
-
-      <!-- Upload d'image -->
-      <div class="form-group">
-        <label for="imageUpload" class="required">
-          Photo du produit
-        </label>
-
-        <div class="upload-container">
-          <input
-            type="file"
-            id="imageUpload"
-            (change)="onFileSelected($event)"
-            accept="image/*"
-            class="file-input"
-            #fileInput
-            required
-            [class.invalid]="!selectedFile && isSubmitted">
-
-          <div class="upload-area" [class.has-image]="previewUrl" (click)="fileInput.click()">
-            <div class="upload-content" *ngIf="!previewUrl">
-              <div class="upload-icon">
-                <i class="fas fa-cloud-upload-alt"></i>
-              </div>
-              <div class="upload-text">
-                <p class="upload-title">Cliquez pour sélectionner une photo</p>
-                <p class="upload-subtitle">Formats: JPEG, PNG, GIF, WebP</p>
-                <p class="upload-info">Taille maximale: 10MB</p>
-              </div>
-            </div>
-
-            <div class="image-preview" *ngIf="previewUrl">
-              <img [src]="previewUrl" alt="Aperçu du produit">
-              <div class="image-overlay">
-                <button type="button" class="change-image" (click)="$event.stopPropagation(); fileInput.click()">
-                  <i class="fas fa-sync-alt"></i> Changer
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div *ngIf="!selectedFile && isSubmitted" class="error-message">
-            <span>Veuillez sélectionner une photo</span>
+            #nomInput="ngModel"
+            [class.invalid]="nomInput.invalid && (nomInput.touched || isSubmitted)">
+          <div *ngIf="nomInput.invalid && (nomInput.touched || isSubmitted)" class="error-message">
+            Le titre est obligatoire
           </div>
         </div>
 
-        <!-- Info fichier sélectionné -->
-        <div *ngIf="selectedFile" class="file-info">
-          <div class="file-info-content">
+        <!-- Catégorie et Type -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="categorie">
+              <i class="fas fa-tag"></i>
+              Domaine <span class="required-star">*</span>
+            </label>
+            <select id="categorie" [(ngModel)]="produitData.categorie" name="categorie">
+              <option *ngFor="let cat of categories" [value]="cat.value">
+                {{ cat.label }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="type">
+              <i class="fas fa-briefcase"></i>
+              Type de prestation
+            </label>
+            <select id="type" [(ngModel)]="produitData.type" name="type">
+              <option *ngFor="let t of types" [value]="t.toLowerCase()">{{ t }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Niveau et Durée -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="niveau">
+              <i class="fas fa-chart-line"></i>
+              Niveau
+            </label>
+            <select id="niveau" [(ngModel)]="produitData.niveau" name="niveau">
+              <option *ngFor="let n of niveaux" [value]="n">{{ n }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="duree">
+              <i class="fas fa-clock"></i>
+              Durée <span class="required-star">*</span>
+            </label>
+            <input
+              type="text"
+              id="duree"
+              [(ngModel)]="produitData.duree"
+              name="duree"
+              placeholder="Ex: 2 jours / 14 heures"
+              required>
+          </div>
+        </div>
+
+        <!-- Prix -->
+        <div class="form-group">
+          <label for="prix">
+            <i class="fas fa-money-bill-wave"></i>
+            Prix <span class="required-star">*</span>
+          </label>
+          <div class="price-input">
+            <input
+              type="number"
+              id="prix"
+              [(ngModel)]="produitData.prix"
+              name="prix"
+              min="1000"
+              step="1000"
+              placeholder="250000"
+              required
+              #prixInput="ngModel">
+            <span class="currency">FCFA</span>
+          </div>
+          <div *ngIf="prixInput.invalid && (prixInput.touched || isSubmitted)" class="error-message">
+            Prix minimum: 1 000 FCFA
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Public cible -->
+      <div class="form-section">
+        <div class="section-title">
+          <i class="fas fa-users"></i>
+          <h3>2. Public cible</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="publicCible">
+            <i class="fas fa-user-check"></i>
+            Public visé
+          </label>
+          <textarea
+            id="publicCible"
+            [(ngModel)]="produitData.publicCible"
+            name="publicCible"
+            rows="2"
+            placeholder="Ex: Managers, chefs d'équipe, responsables RH, cadres dirigeants..."></textarea>
+          <small class="field-hint">Décrivez à qui s'adresse cette formation</small>
+        </div>
+
+        <div class="form-group">
+          <label for="prerequis">
+            <i class="fas fa-tasks"></i>
+            Prérequis
+          </label>
+          <textarea
+            id="prerequis"
+            [(ngModel)]="produitData.prerequis"
+            name="prerequis"
+            rows="2"
+            placeholder="Ex: Aucun prérequis / Connaissances de base en management / Expérience en gestion d'équipe..."></textarea>
+        </div>
+      </div>
+
+      <!-- Section 3: Contenu -->
+      <div class="form-section">
+        <div class="section-title">
+          <i class="fas fa-book-open"></i>
+          <h3>3. Contenu de la formation</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="description">
+            <i class="fas fa-paragraph"></i>
+            Description courte <span class="required-star">*</span>
+          </label>
+          <textarea
+            id="description"
+            [(ngModel)]="produitData.description"
+            name="description"
+            rows="3"
+            placeholder="Décrivez brièvement la formation (2-3 phrases)..."
+            required
+            #descInput="ngModel"></textarea>
+          <div class="char-counter">{{ (produitData.description || '').length }}/500 caractères</div>
+        </div>
+
+        <div class="form-group">
+          <label for="objectifs">
+            <i class="fas fa-bullseye"></i>
+            Objectifs pédagogiques
+          </label>
+          <textarea
+            id="objectifs"
+            [(ngModel)]="produitData.objectifs"
+            name="objectifs"
+            rows="3"
+            placeholder="• Maîtriser les concepts clés de l'Intelligence Émotionnelle&#10;• Développer son leadership émotionnel&#10;• Améliorer la communication en équipe"></textarea>
+          <small class="field-hint">Listez les objectifs, un par ligne</small>
+        </div>
+
+        <div class="form-group">
+          <label for="programme">
+            <i class="fas fa-list-ol"></i>
+            Programme détaillé
+          </label>
+          <textarea
+            id="programme"
+            [(ngModel)]="produitData.programme"
+            name="programme"
+            rows="4"
+            placeholder="Module 1: Les fondamentaux de l'IE&#10;Module 2: Applications pratiques&#10;Module 3: Cas concrets et mise en situation"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 4: Image -->
+      <div class="form-section">
+        <div class="section-title">
+          <i class="fas fa-image"></i>
+          <h3>4. Visuel</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="imageUpload">
+            <i class="fas fa-camera"></i>
+            Photo illustrative <span class="required-star" *ngIf="mode === 'create'">*</span>
+          </label>
+
+          <div class="upload-container">
+            <input
+              type="file"
+              id="imageUpload"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+              class="file-input"
+              #fileInput>
+
+            <div class="upload-area" [class.has-image]="previewUrl" (click)="fileInput.click()">
+              <div class="upload-content" *ngIf="!previewUrl">
+                <div class="upload-icon">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="upload-text">
+                  <p class="upload-title">Cliquez pour sélectionner une image</p>
+                  <p class="upload-subtitle">Formats: JPEG, PNG, WebP | Max: 10MB</p>
+                </div>
+              </div>
+
+              <div class="image-preview" *ngIf="previewUrl">
+                <img [src]="previewUrl" alt="Aperçu">
+                <div class="image-overlay">
+                  <button type="button" class="change-image" (click)="$event.stopPropagation(); fileInput.click()">
+                    <i class="fas fa-sync-alt"></i> Changer
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="!selectedFile && isSubmitted && mode === 'create'" class="error-message">
+              <i class="fas fa-exclamation-circle"></i> Une image est obligatoire
+            </div>
+          </div>
+
+          <div *ngIf="selectedFile" class="file-info">
             <i class="fas fa-check-circle success"></i>
-            <div class="file-details">
-              <span class="file-name">{{ selectedFile.name }}</span>
-              <span class="file-size">({{ formatFileSize(selectedFile.size) }})</span>
-            </div>
-            <button type="button" class="remove-file" (click)="removeImage()" aria-label="Supprimer l'image">
-              <i class="fas fa-times"></i>
+            <span>{{ selectedFile.name }}</span>
+            <small>({{ formatFileSize(selectedFile.size) }})</small>
+            <button type="button" class="remove-file" (click)="removeImage()">
+              <i class="fas fa-trash-alt"></i>
             </button>
           </div>
         </div>
       </div>
 
+      <!-- Champs obligatoires note -->
+      <div class="required-note">
+        <i class="fas fa-asterisk"></i> Champs obligatoires
+      </div>
+
       <!-- Boutons d'action -->
       <div class="form-actions">
-        <button type="button" class="btn btn-secondary" (click)="onCancel()" [disabled]="isLoading">
+        <button type="button" class="btn-cancel" (click)="onCancel()" [disabled]="isLoading">
           <i class="fas fa-times"></i>
           Annuler
         </button>
 
-        <button type="submit" class="btn btn-primary" [disabled]="isLoading || !produitForm.form.valid">
+        <button type="submit" class="btn-submit" [disabled]="isLoading || !isFormValid()">
           <i class="fas" [class.fa-save]="!isLoading" [class.fa-spinner.fa-spin]="isLoading"></i>
           {{ submitButtonText }}
         </button>
-      </div>
-
-      <!-- Note obligatoire -->
-      <div class="required-note">
-        <i class="fas fa-asterisk"></i> Champs obligatoires
       </div>
     </form>
   </div>

@@ -10,21 +10,25 @@ import {FooterComponent} from '../footer/footer.component';
   imports: [
     CommonModule,
     RouterOutlet,
-    HeaderComponent,
-    RouterLink,        // ✅ Nécessaire pour routerLink
-    RouterLinkActive,   // ✅ Nécessaire pour routerLinkActive
+    RouterLink,
+    RouterLinkActive,
     FooterComponent
   ],
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
 
   isMenuOpen = false;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+    // Empêcher le défilement quand le menu est ouvert
+    if (this.isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   }
+
   ngOnInit(): void { }
 }
-
-

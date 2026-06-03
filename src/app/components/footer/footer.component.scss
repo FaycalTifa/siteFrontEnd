@@ -1,32 +1,449 @@
+// Variables
+$primary: #2c5530;
+$primary-light: #4a7c59;
+$secondary: #8fb996;
+$accent: #ffd700;
+$dark: #1a2e1d;
+$text-dark: #2d3748;
+$text-light: #6c757d;
+$white: #ffffff;
+$gray-bg: #f8f9fa;
+$border-color: rgba(255, 255, 255, 0.1);
+$transition: all 0.3s ease;
+
 .site-footer {
-  background: #2d3748;
-  color: white;
-  padding: 2rem 0;
-  text-align: center;
+  background: linear-gradient(135deg, $dark 0%, $primary 100%);
+  color: $white;
+  padding-top: 3rem;
   margin-top: auto;
+  position: relative;
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $accent, $secondary, $primary-light);
   }
+}
 
-  p {
-    margin: 0;
-    font-size: 1rem;
-    color: #cbd5e0;
-  }
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-  a {
-    color: #8fb996;
-    text-decoration: none;
-    margin: 0 0.5rem;
-    transition: color 0.3s ease;
-    font-weight: 500;
+// Footer Grid
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid $border-color;
 
-    &:hover {
-      color: #4a7c59;
-      text-decoration: underline;
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: $accent;
+      border-radius: 3px;
     }
   }
+}
+
+// Logo Section
+.footer-about {
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+
+    .logo-image {
+      height: 45px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+
+      .logo-title {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: $accent;
+        letter-spacing: 1px;
+      }
+
+      .logo-subtitle {
+        font-size: 0.7rem;
+        font-weight: 600;
+        opacity: 0.9;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  .footer-description {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+
+  .footer-certification {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba($accent, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.75rem;
+
+    i {
+      color: $accent;
+    }
+  }
+}
+
+// Footer Links
+.footer-links {
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.8rem;
+
+      a {
+        color: $white;
+        text-decoration: none;
+        font-size: 0.85rem;
+        opacity: 0.8;
+        transition: $transition;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        i {
+          font-size: 0.7rem;
+          transition: $transition;
+        }
+
+        &:hover {
+          opacity: 1;
+          transform: translateX(5px);
+
+          i {
+            color: $accent;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Footer Contact
+.footer-contact {
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+
+      i {
+        width: 35px;
+        height: 35px;
+        background: rgba($white, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        transition: $transition;
+      }
+
+      div {
+        flex: 1;
+
+        span {
+          display: block;
+          font-size: 0.7rem;
+          opacity: 0.7;
+          margin-bottom: 0.2rem;
+        }
+
+        a, p {
+          font-size: 0.85rem;
+          color: $white;
+          text-decoration: none;
+          margin: 0;
+
+          &:hover {
+            color: $accent;
+          }
+        }
+      }
+
+      &:hover i {
+        background: rgba($accent, 0.3);
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// Footer Hours
+.footer-hours {
+  .hours-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+  }
+
+  .newsletter-mini {
+    h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+
+      input {
+        flex: 1;
+        padding: 0.6rem 0.8rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 0.8rem;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      button {
+        width: 35px;
+        height: 35px;
+        background: $accent;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: $transition;
+
+        i {
+          color: $primary;
+          font-size: 0.9rem;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+// Footer Bottom
+.footer-bottom {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .footer-social {
+    h4 {
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.7;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 25px;
+        text-decoration: none;
+        color: $white;
+        font-size: 0.75rem;
+        transition: $transition;
+
+        i {
+          font-size: 0.9rem;
+        }
+
+        span {
+          font-size: 0.7rem;
+        }
+
+        &.whatsapp {
+          background: #25D366;
+          &:hover { background: darken(#25D366, 10%); transform: translateY(-2px); }
+        }
+        &.facebook {
+          background: #1877F2;
+          &:hover { background: darken(#1877F2, 10%); transform: translateY(-2px); }
+        }
+        &.instagram {
+          background: #E4405F;
+          &:hover { background: darken(#E4405F, 10%); transform: translateY(-2px); }
+        }
+        &.linkedin {
+          background: #0A66C2;
+          &:hover { background: darken(#0A66C2, 10%); transform: translateY(-2px); }
+        }
+      }
+    }
+  }
+
+  .footer-copyright {
+    text-align: center;
+
+    p {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin: 0;
+
+      &.developer-credit {
+        margin-top: 0.3rem;
+
+        strong {
+          color: $accent;
+        }
+
+        i {
+          margin: 0 0.2rem;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .footer-backtop {
+    .back-to-top {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba($white, 0.1);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      color: $white;
+      cursor: pointer;
+      transition: $transition;
+
+      i {
+        font-size: 0.9rem;
+      }
+
+      span {
+        font-size: 0.8rem;
+      }
+
+      &:hover {
+        background: $accent;
+        color: $primary;
+        transform: translateY(-3px);
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-social .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+
+    .footer-social .social-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  .footer-copyright {
+    order: 2;
+  }
+
+  .footer-backtop {
+    order: 1;
+  }
+}
+
+// Animation d'entrée
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-grid > div {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
 }

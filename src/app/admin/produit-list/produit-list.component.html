@@ -1,76 +1,219 @@
-<section class="produits-section">
-  <div class="container">
+<app-header></app-header>
 
-    <div class="section-header">
-      <h1>Nos Produits Agricoles</h1>
-      <p>Découvrez notre sélection de produits frais et équipements</p>
-    </div>
-
-    <!-- Filtres -->
-    <div class="filters-container">
-      <div class="search-bar">
-        <input
-          type="text"
-          [(ngModel)]="searchTerm"
-          (input)="onSearchChange()"
-          placeholder="Rechercher un produit..." />
-      </div>
-
-      <div class="category-filters">
-        <button
-          class="filter-btn"
-          [class.active]="selectedCategory === 'all'"
-          (click)="filterByCategory('all')">
-          Tous
-        </button>
-
-        <button
-          *ngFor="let category of categories"
-          class="filter-btn"
-          [class.active]="selectedCategory === category"
-          (click)="filterByCategory(category)">
-          {{ category }}
-        </button>
+<main>
+  <!-- Hero Section -->
+  <section class="products-hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content animate-fade-in-up">
+        <span class="hero-badge">
+          <i class="fas fa-graduation-cap"></i>
+          Nos Formations
+        </span>
+        <h1 class="hero-title">
+          Découvrez nos <span class="highlight">Formations</span>
+        </h1>
+        <p class="hero-description">
+          Des formations de qualité supérieure pour développer vos compétences et booster votre carrière
+        </p>
       </div>
     </div>
-
-    <div class="loading-state" *ngIf="isLoading">
-      <div class="spinner"></div>
-      <p>Chargement des produits...</p>
+    <div class="hero-wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+        <path fill="#ffffff" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+      </svg>
     </div>
+  </section>
 
-    <div class="produits-grid" *ngIf="!isLoading">
-      <div class="produit-card" *ngFor="let produit of filteredProduits">
-        <div class="produit-image" (click)="openImage(produit.imageUrl)">
-          <img [src]="produit.imageUrl" [alt]="produit.nom" (error)="onImageError($event)" loading="lazy" />
+  <div class="products-section">
+    <div class="container">
+
+      <!-- Filtres améliorés -->
+      <div class="filters-card animate-fade-in-up">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            (input)="onSearchChange()"
+            placeholder="Rechercher une formation..."
+            class="search-input"
+          />
+          <button *ngIf="searchTerm" class="clear-search" (click)="searchTerm = ''; applyFilters()">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
 
-        <div class="produit-info">
-          <span class="produit-category">{{ produit.categorie }}</span>
-          <h3 class="produit-name">{{ produit.nom }}</h3>
-          <p class="produit-description">{{ produit.description }}</p>
-          <div class="produit-pricing">
-            <span class="current-price">{{ produit.prix  | currency:'FCFA ' }}</span>
+        <div class="category-wrapper">
+          <span class="category-label">
+            <i class="fas fa-tags"></i>
+            Domaines :
+          </span>
+          <div class="category-filters">
+            <button
+              class="filter-chip"
+              [class.active]="selectedCategory === 'all'"
+              (click)="filterByCategory('all')">
+              <i class="fas fa-th-large"></i>
+              Toutes
+              <span class="count">{{ produits.length }}</span>
+            </button>
+
+            <button
+              *ngFor="let category of categories"
+              class="filter-chip"
+              [class.active]="selectedCategory === category"
+              (click)="filterByCategory(category)">
+              <i class="fas fa-tag"></i>
+              {{ category }}
+              <span class="count">{{ getCategoryCount(category) }}</span>
+            </button>
           </div>
-          <div class="produit-stock">
-            <span [class.in-stock]="produit.enStock" [class.out-stock]="!produit.enStock">
-              {{ produit.enStock ? 'En stock' : 'Rupture' }}
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div class="loading-state" *ngIf="isLoading">
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+        </div>
+        <p class="loading-text">Chargement des formations...</p>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" *ngIf="!isLoading">
+        <div class="product-card" *ngFor="let produit of filteredProduits; let i = index"
+             [style.animation-delay]="i * 0.05 + 's'">
+
+          <!-- Badge Promotion -->
+          <div class="product-badge" *ngIf="produit.enPromotion">
+            <i class="fas fa-fire"></i>
+            Promotion
+          </div>
+
+          <!-- Type Badge -->
+          <div class="type-badge" *ngIf="produit.type">
+            <i [class]="getTypeIcon(produit.type)"></i>
+            {{ produit.type || 'Formation' }}
+          </div>
+
+          <!-- Product Image -->
+          <div class="product-image" (click)="openImage(produit.imageUrl)">
+            <img [src]="produit.imageUrl" [alt]="produit.nom" (error)="onImageError($event)" loading="lazy" />
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+              <span>Agrandir</span>
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info">
+            <div class="product-category">
+              <i class="fas fa-folder-open"></i>
+              {{ produit.categorie }}
+            </div>
+
+            <h3 class="product-name">{{ produit.nom }}</h3>
+
+            <!-- Infos formation : durée et niveau -->
+            <div class="formation-meta">
+              <span class="meta-item" *ngIf="produit.duree">
+                <i class="fas fa-clock"></i>
+                {{ produit.duree }}
+              </span>
+              <span class="meta-item" *ngIf="produit.niveau">
+                <i class="fas fa-chart-line"></i>
+                <span [class]="getNiveauBadgeClass(produit.niveau)">{{ produit.niveau }}</span>
+              </span>
+            </div>
+
+            <p class="product-description">{{ (produit.description || '') | slice:0:80 }}{{ (produit.description || '').length > 80 ? '...' : '' }}</p>
+
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-amount">{{ produit.prix | number:'1.0-0' }}</span>
+                <span class="price-currency">FCFA</span>
+              </div>
+
+              <button class="view-btn" (click)="openImage(produit.imageUrl)">
+                <i class="fas fa-info-circle"></i>
+                Détails
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results -->
+      <div class="no-results" *ngIf="!isLoading && filteredProduits.length === 0">
+        <div class="no-results-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3>Aucune formation trouvée</h3>
+        <p>Essayez de modifier vos filtres ou votre recherche.</p>
+        <button class="reset-btn" (click)="resetFilters()">
+          <i class="fas fa-undo-alt"></i>
+          Réinitialiser les filtres
+        </button>
+      </div>
+
+      <!-- Results Count -->
+      <div class="results-count" *ngIf="!isLoading && filteredProduits.length > 0">
+        <i class="fas fa-chart-line"></i>
+        {{ filteredProduits.length }} formation(s) trouvée(s)
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox amélioré avec détails formation -->
+  <div class="image-lightbox" *ngIf="selectedImageUrl" (click)="closeImage()">
+    <div class="lightbox-container" (click)="$event.stopPropagation()">
+      <button class="lightbox-close" (click)="closeImage()">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="lightbox-content" *ngIf="currentImageIndex >= 0 && filteredProduits[currentImageIndex]">
+        <div class="lightbox-image">
+          <img [src]="selectedImageUrl" alt="Formation" />
+        </div>
+        <div class="lightbox-details">
+          <h2>{{ filteredProduits[currentImageIndex].nom }}</h2>
+          <div class="lightbox-meta">
+            <span class="meta-badge">
+              <i class="fas fa-tag"></i>
+              {{ filteredProduits[currentImageIndex].categorie }}
+            </span>
+            <span class="meta-badge" *ngIf="filteredProduits[currentImageIndex].type">
+              <i [class]="getTypeIcon(filteredProduits[currentImageIndex].type)"></i>
+              {{ filteredProduits[currentImageIndex].type }}
+            </span>
+            <span class="meta-badge" *ngIf="filteredProduits[currentImageIndex].niveau">
+              <i class="fas fa-chart-line"></i>
+              {{ filteredProduits[currentImageIndex].niveau }}
+            </span>
+            <span class="meta-badge" *ngIf="filteredProduits[currentImageIndex].duree">
+              <i class="fas fa-clock"></i>
+              {{ filteredProduits[currentImageIndex].duree }}
             </span>
           </div>
+          <p class="lightbox-description">{{ filteredProduits[currentImageIndex].description }}</p>
+          <div class="lightbox-price">
+            <span class="price">{{ filteredProduits[currentImageIndex].prix | number:'1.0-0' }} FCFA</span>
+          </div>
+          <button class="contact-btn" routerLink="/contact">
+            <i class="fas fa-envelope"></i>
+            Demander un devis
+          </button>
         </div>
       </div>
+
+      <button class="lightbox-prev" (click)="navigateImage(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-next" (click)="navigateImage(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </div>
-
-    <div class="no-results" *ngIf="!isLoading && filteredProduits.length === 0">
-      <h3>Aucun produit trouvé</h3>
-      <p>Essayez de modifier vos filtres ou votre recherche.</p>
-    </div>
-
   </div>
+</main>
 
-  <!-- Lightbox -->
-  <div class="image-lightbox" *ngIf="selectedImageUrl" (click)="closeImage()">
-    <img [src]="selectedImageUrl" alt="Produit" (click)="$event.stopPropagation()" />
-    <button class="close-lightbox" (click)="closeImage()">×</button>
-  </div>
-</section>

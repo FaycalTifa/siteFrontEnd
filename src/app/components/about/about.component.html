@@ -1,197 +1,86 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
 
-
-<div class="about-container">
-  <!-- Hero Section -->
+<main>
+  <!-- Hero Section avec logo -->
   <section class="about-hero">
-    <div class="hero-content">
-      <h1 class="hero-title">Notre <span class="highlight">Histoire</span></h1>
-      <p class="hero-subtitle">Découvrez l'aventure FOCUS SUPLY TRANING</p>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number">5+</span>
-          <span class="stat-label">Années d'expérience</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">500+</span>
-          <span class="stat-label">Clients satisfaits</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">50+</span>
-          <span class="stat-label">Produits qualité</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600" alt="Notre équipe" class="hero-image">
-    </div>
-  </section>
-
-  <!-- Mission & Vision -->
-  <section class="mission-vision">
+    <div class="hero-bg"></div>
     <div class="container">
-      <div class="mission-card">
-        <div class="card-icon">
-          <i class="fas fa-bullseye"></i>
+      <div class="hero-content animate-fade-in-up">
+        <div class="logo-container">
+          <img src="assets/images/logo.png" alt="Focus Supply Training" class="hero-logo">
         </div>
-        <h2>Notre Mission</h2>
-        <p>Fournir des produits agricoles de qualité supérieure qui répondent aux besoins de nos clients tout en respectant l'environnement et en soutenant les agriculteurs locaux.</p>
-      </div>
-
-      <div class="vision-card">
-        <div class="card-icon">
-          <i class="fas fa-eye"></i>
-        </div>
-        <h2>Notre Vision</h2>
-        <p>Devenir le leader régional dans la distribution de produits agricoles innovants et durables, en créant une communauté prospère autour de l'agriculture responsable.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Valeurs -->
-  <section class="values-section">
-    <div class="container">
-      <h2 class="section-title">Nos Valeurs</h2>
-      <div class="values-grid">
-        <div class="value-card">
-          <div class="value-icon quality">
-            <i class="fas fa-award"></i>
-          </div>
-          <h3>Qualité</h3>
-          <p>Nous garantissons des produits rigoureusement sélectionnés et testés.</p>
-        </div>
-
-        <div class="value-card">
-          <div class="value-icon innovation">
-            <i class="fas fa-lightbulb"></i>
-          </div>
-          <h3>Innovation</h3>
-          <p>Nous adoptons les dernières technologies pour améliorer nos services.</p>
-        </div>
-
-        <div class="value-card">
-          <div class="value-icon sustainability">
-            <i class="fas fa-leaf"></i>
-          </div>
-          <h3>Durabilité</h3>
-          <p>Nous nous engageons pour une agriculture respectueuse de l'environnement.</p>
-        </div>
-
-        <div class="value-card">
-          <div class="value-icon community">
-            <i class="fas fa-handshake"></i>
-          </div>
-          <h3>Communauté</h3>
-          <p>Nous soutenons et développons le tissu agricole local.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Équipe -->
-  <section class="team-section">
-    <div class="container">
-      <h2 class="section-title">Notre Équipe</h2>
-      <div class="team-grid">
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300" alt="Directeur">
-          </div>
-          <h3>Jean Dupont</h3>
-          <p class="member-role">Directeur Général</p>
-          <p class="member-desc">Expert en agronomie avec 15 ans d'expérience.</p>
-        </div>
-
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300" alt="Responsable Qualité">
-          </div>
-          <h3>Marie Martin</h3>
-          <p class="member-role">Responsable Qualité</p>
-          <p class="member-desc">Garant de l'excellence de nos produits.</p>
-        </div>
-
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300" alt="Responsable Commercial">
-          </div>
-          <h3>Pierre Leroy</h3>
-          <p class="member-role">Responsable Commercial</p>
-          <p class="member-desc">Au service de la satisfaction client.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contacts Stylisés -->
-  <section class="contacts-section">
-    <div class="container">
-      <h2 class="section-title">Contactez-Nous</h2>
-      <p class="section-subtitle">Restons en contact pour mieux vous servir</p>
-
-      <div class="contacts-grid">
-        <!-- Téléphone -->
-        <div class="contact-card">
-          <div class="contact-icon phone">
-            <i class="fas fa-phone"></i>
-          </div>
-          <div class="contact-info">
-            <h3>Téléphone</h3>
-            <p>+226 71000000</p>
-            <span class="contact-note">Lun-Ven: 8h-18h</span>
-          </div>
-        </div>
-
-        <!-- Email -->
-        <div class="contact-card">
-          <div class="contact-icon email">
+        <span class="hero-badge">À propos</span>
+        <h1 class="hero-title">
+          <span class="highlight">Focus Supply Training</span>
+        </h1>
+        <p class="hero-subtitle">
+          Là où l'efficience opérationnelle rencontre l'excellence humaine
+        </p>
+        <p class="hero-description">
+          Experts en formation et en optimisation des achats et de l'approvisionnement, nous aidons les entreprises
+          à renforcer durablement leur performance. Notre approche allie développement des compétences,
+          efficacité opérationnelle et valorisation du capital humain.
+        </p>
+        <div class="hero-buttons">
+          <a routerLink="/contact" class="btn-primary">
             <i class="fas fa-envelope"></i>
+            Nous contacter
+          </a>
+          <a routerLink="/produits-list" class="btn-outline">
+            <i class="fas fa-graduation-cap"></i>
+            Nos formations
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-stats-grid animate-fade-in-up">
+        <div class="stat-card" *ngFor="let stat of stats">
+          <div class="stat-icon">
+            <i [class]="stat.icon"></i>
           </div>
-          <div class="contact-info">
-            <h3>Email</h3>
-            <!-- CORRECTION DE L'EMAIL -->
-            <p>contact&#64;toyago-agro.com</p>
-            <span class="contact-note">Réponse sous 24h</span>
+          <div class="stat-number">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section image5.png -->
+  <section class="showcase-section">
+    <div class="container">
+      <div class="showcase-content">
+        <div class="showcase-image animate-slide-in-left">
+          <img src="assets/images/image5.png" alt="Focus Supply Training en action" class="showcase-img">
+          <div class="image-caption">
+            <i class="fas fa-quote-right"></i>
+            <span>La formation qui transforme</span>
           </div>
         </div>
-
-        <!-- Adresse -->
-        <div class="contact-card">
-          <div class="contact-icon address">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div class="contact-info">
-            <h3>Adresse</h3>
-            <p>123 Rue de l'Agriculture<br>Ouagadougou , BURKINA FASO</p>
-            <span class="contact-note">Visite sur rendez-vous</span>
-          </div>
-        </div>
-
-        <!-- Réseaux Sociaux -->
-        <div class="contact-card social">
-          <div class="contact-icon social">
-            <i class="fas fa-share-alt"></i>
-          </div>
-          <div class="contact-info">
-            <h3>Réseaux Sociaux</h3>
-            <div class="social-links">
-              <a href="#" class="social-link whatsapp">
-                <i class="fab fa-whatsapp"></i>
-                <span>WhatsApp</span>
-              </a>
-              <a href="#" class="social-link facebook">
-                <i class="fab fa-facebook-f"></i>
-                <span>Facebook</span>
-              </a>
-              <a href="#" class="social-link instagram">
-                <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
-              </a>
-              <a href="#" class="social-link linkedin">
-                <i class="fab fa-linkedin-in"></i>
-                <span>LinkedIn</span>
-              </a>
+        <div class="showcase-text animate-slide-in-right">
+          <span class="section-badge">Notre Impact</span>
+          <h2>Une approche qui fait la différence</h2>
+          <p>Nous croyons fermement que la réussite d'une entreprise repose avant tout sur les individus. C'est pourquoi nous plaçons l'humain au cœur de notre stratégie de formation.</p>
+          <div class="impact-items">
+            <div class="impact-item">
+              <i class="fas fa-chart-line"></i>
+              <div>
+                <strong>+45% de performance</strong>
+                <span>constatée chez nos clients</span>
+              </div>
+            </div>
+            <div class="impact-item">
+              <i class="fas fa-users"></i>
+              <div>
+                <strong>500+ entreprises</strong>
+                <span>nous ont fait confiance</span>
+              </div>
+            </div>
+            <div class="impact-item">
+              <i class="fas fa-star"></i>
+              <div>
+                <strong>98% de satisfaction</strong>
+                <span>taux de recommandation</span>
+              </div>
             </div>
           </div>
         </div>
@@ -199,25 +88,196 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta-section">
+  <!-- Mission & Vision -->
+  <section class="mission-vision">
     <div class="container">
-      <h2>Prêt à Découvrir Nos Produits ?</h2>
-      <p>Rejoignez la famille FOCUS SUPLY TRANING dès aujourd'hui</p>
-      <div class="cta-buttons">
-        <!-- REMPLACER routerLink PAR DES LIENS SIMPLES -->
-        <a href="/produits-list" class="btn btn-primary">
-          <i class="fas fa-shopping-bag"></i>
-          Voir nos produits
-        </a>
-        <a href="/contact" class="btn btn-secondary">
-          <i class="fas fa-envelope"></i>
-          Nous contacter
-        </a>
+      <div class="mission-card animate-slide-in-left">
+        <div class="card-icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <h2>Notre Mission</h2>
+        <p>Propulser la performance globale des entreprises en unissant croissance économique, engagement et épanouissement des collaborateurs. Nous portons une conviction forte : la croissance durable est indissociable de l'engagement de vos collaborateurs.</p>
+        <div class="card-quote">
+          <i class="fas fa-quote-left"></i>
+          <span>80% de la performance humaine vient du quotient émotionnel</span>
+        </div>
+      </div>
+
+      <div class="vision-card animate-slide-in-right">
+        <div class="card-icon">
+          <i class="fas fa-eye"></i>
+        </div>
+        <h2>Notre Vision</h2>
+        <p>Devenir le partenaire stratégique de référence des entreprises qui placent l'humain au cœur de leur performance globale, pour bâtir ensemble des entreprises plus résilientes, plus humaines et en constante évolution.</p>
+        <div class="card-quote">
+          <i class="fas fa-quote-left"></i>
+          <span>Le défi de demain, dès aujourd'hui</span>
+        </div>
       </div>
     </div>
   </section>
-</div>
 
+  <!-- Nos Valeurs -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Nos Valeurs</span>
+        <h2>Ce qui nous guide</h2>
+        <p>Des principes forts pour un accompagnement d'excellence</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card" *ngFor="let value of values; let i = index" [style.animation-delay]="i * 0.1 + 's'">
+          <div class="value-icon" [style.background]="value.color">
+            <i [class]="value.icon"></i>
+          </div>
+          <h3>{{ value.title }}</h3>
+          <p>{{ value.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<app-footer></app-footer>
+  <!-- Notre Approche -->
+  <section class="approach-section">
+    <div class="container">
+      <div class="approach-content">
+        <div class="approach-text">
+          <span class="section-badge">Notre Approche</span>
+          <h2>Des solutions concrètes, adaptées à vos réalités</h2>
+          <p>Nous proposons un accompagnement sur mesure avec :</p>
+          <ul class="approach-list">
+            <li>
+              <i class="fas fa-headset"></i>
+              <div>
+                <strong>L'écoute et la compréhension</strong>
+                <span>De vos enjeux et de votre contexte unique</span>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-tools"></i>
+              <div>
+                <strong>Des outils pratiques</strong>
+                <span>Directement applicables sur le terrain</span>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-user-check"></i>
+              <div>
+                <strong>Une approche personnalisée</strong>
+                <span>Adaptée à chaque organisation</span>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-chart-line"></i>
+              <div>
+                <strong>Un suivi orienté résultats</strong>
+                <span>Mesurable et transparent</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="approach-stats">
+          <div class="stat-circle">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" stroke-width="6"/>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#2c5530" stroke-width="6"
+                      stroke-dasharray="283" stroke-dashoffset="56.6"/>
+            </svg>
+            <div class="stat-number">80<span>%</span></div>
+            <div class="stat-label">Performance<br>humaine (QE)</div>
+          </div>
+          <div class="stat-circle">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" stroke-width="6"/>
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#4a7c59" stroke-width="6"
+                      stroke-dasharray="283" stroke-dashoffset="226.4"/>
+            </svg>
+            <div class="stat-number">20<span>%</span></div>
+            <div class="stat-label">Compétences<br>intellectuelles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Domaines d'expertise -->
+  <section class="expertise-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Notre Expertise</span>
+        <h2>Nos domaines d'expertise</h2>
+        <p>Une double compétence unique pour votre réussite</p>
+      </div>
+      <div class="expertise-grid">
+        <div class="expertise-card" *ngFor="let area of expertiseAreas">
+          <div class="expertise-icon">
+            <i [class]="area.title === 'Intelligence Émotionnelle' ? 'fas fa-brain' : 'fas fa-truck'"></i>
+          </div>
+          <h3>{{ area.title }}</h3>
+          <p>{{ area.description }}</p>
+          <ul class="expertise-features">
+            <li *ngFor="let feature of area.features">
+              <i class="fas fa-check-circle"></i>
+              <span>{{ feature }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi nous choisir -->
+  <section class="why-us">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Pourquoi nous choisir ?</span>
+        <h2>Notre promesse</h2>
+        <p>Allier épanouissement de vos collaborateurs à une efficacité économique mesurable</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Double expertise</h3>
+          <p>Humaine et opérationnelle</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>Approche pragmatique</h3>
+          <p>Orientée impact</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h3>Contexte local</h3>
+          <p>Parfaite compréhension des réalités locales</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Engagement durable</h3>
+          <p>Des résultats durables à vos côtés</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section avec logo -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <img src="assets/images/logo.png" alt="Focus Supply Training" class="cta-logo">
+        <h2>Construisons ensemble votre réussite</h2>
+        <p>Nous sommes convaincus que chaque entreprise a le potentiel de devenir à la fois performante et humaine.</p>
+        <div class="cta-buttons">
+          <a routerLink="/contact" class="btn-primary btn-large">
+            <i class="fas fa-envelope"></i>
+            Contactez-nous
+          </a>
+          <a routerLink="/produits-list" class="btn-outline-light">
+            <i class="fas fa-graduation-cap"></i>
+            Découvrir nos formations
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+

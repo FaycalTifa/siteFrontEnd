@@ -2,22 +2,41 @@
   <div class="container">
     <!-- Logo et Nom de l'entreprise -->
     <div class="logo-section">
-      <div class="logo">FOCUS SUPLY TRANING</div>
-      <h1 class="company-name"></h1>
+      <a routerLink="/" class="logo-link">
+        <img src="assets/images/logo.png" alt="Focus Supply Training" class="logo-image">
+        <div class="logo-text">
+          <span class="logo-title">FOCUS SUPPLY</span>
+          <span class="logo-subtitle">TRAINING</span>
+        </div>
+      </a>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation Desktop -->
     <nav class="main-nav">
-      <a routerLink="/" class="nav-link" routerLinkActive="active">Accueil</a>
-      <a routerLink="/about" class="nav-link" routerLinkActive="active">À propos</a>
-      <a routerLink="/produits-list" class="nav-link" routerLinkActive="active">Produits</a>
-      <a routerLink="/contact" class="nav-link" routerLinkActive="active">Contact</a>
-      <!-- ✅ Route cohérente -->
-      <a routerLink="/login" class="nav-link admin-btn" routerLinkActive="active">Publier</a>
+      <a routerLink="/" class="nav-link" routerLinkActive="active">
+        <i class="fas fa-home"></i>
+        <span>Accueil</span>
+      </a>
+      <a routerLink="/about" class="nav-link" routerLinkActive="active">
+        <i class="fas fa-info-circle"></i>
+        <span>À propos</span>
+      </a>
+      <a routerLink="/produits-list" class="nav-link" routerLinkActive="active">
+        <i class="fas fa-shopping-bag"></i>
+        <span>Produits</span>
+      </a>
+      <a routerLink="/contact" class="nav-link" routerLinkActive="active">
+        <i class="fas fa-envelope"></i>
+        <span>Contact</span>
+      </a>
+      <a routerLink="/login" class="nav-link admin-btn" routerLinkActive="active">
+        <i class="fas fa-pen-fancy"></i>
+        <span>Publier</span>
+      </a>
     </nav>
 
-    <!-- Menu mobile -->
-    <button class="mobile-menu-btn" (click)="toggleMenu()">
+    <!-- Menu mobile button -->
+    <button class="mobile-menu-btn" (click)="toggleMenu()" [class.active]="isMenuOpen">
       <span></span>
       <span></span>
       <span></span>
@@ -26,11 +45,25 @@
 
   <!-- Menu mobile dropdown -->
   <div class="mobile-nav" [class.active]="isMenuOpen">
-    <a routerLink="/" (click)="toggleMenu()">Accueil</a>
-    <a routerLink="/about" (click)="toggleMenu()">À propos</a>
-    <a routerLink="/produits" (click)="toggleMenu()">Produits</a>
-    <a routerLink="/contact" (click)="toggleMenu()">Contact</a>
-    <!-- Changer vers /login -->
-    <a routerLink="/logins" (click)="toggleMenu()">Admin</a>
+    <a routerLink="/" (click)="toggleMenu()">
+      <i class="fas fa-home"></i>
+      <span>Accueil</span>
+    </a>
+    <a routerLink="/about" (click)="toggleMenu()">
+      <i class="fas fa-info-circle"></i>
+      <span>À propos</span>
+    </a>
+    <a routerLink="/produits-list" (click)="toggleMenu()">
+      <i class="fas fa-shopping-bag"></i>
+      <span>Produits</span>
+    </a>
+    <a routerLink="/contact" (click)="toggleMenu()">
+      <i class="fas fa-envelope"></i>
+      <span>Contact</span>
+    </a>
+    <a routerLink="/login" (click)="toggleMenu()" class="mobile-admin">
+      <i class="fas fa-pen-fancy"></i>
+      <span>Publier</span>
+    </a>
   </div>
 </header>

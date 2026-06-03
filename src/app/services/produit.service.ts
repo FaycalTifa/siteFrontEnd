@@ -7,7 +7,7 @@ import { Produit } from '../models/entities';
   providedIn: 'root'
 })
 export class ProduitService {
-  private apiUrl = 'http://localhost:9999/api/produits';
+  private apiUrl = 'http://localhost:8080/api/produits';
 
   private jsonHeaders = new HttpHeaders({
     'Content-Type': 'application/json',

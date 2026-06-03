@@ -1,9 +1,135 @@
 <footer class="site-footer">
   <div class="container">
-    <p>© Mon Commerce - FOOTER VISIBLE •
-      <a href="https://wa.me/000000000" target="_blank">WhatsApp</a> •
-      <a href="#" target="_blank">Facebook</a> •
-      <a href="#" target="_blank">Instagram</a>
-    </p>
+    <div class="footer-grid">
+      <!-- Logo et description -->
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="assets/images/logo.png" alt="Focus Supply Training" class="logo-image">
+          <div class="logo-text">
+            <span class="logo-title">FOCUS SUPPLY</span>
+            <span class="logo-subtitle">TRAINING</span>
+          </div>
+        </div>
+        <p class="footer-description">
+          Experts en formation en Intelligence Émotionnelle et en optimisation des achats et approvisionnements.
+          Nous aidons les entreprises à renforcer durablement leur performance.
+        </p>
+        <div class="footer-certification">
+          <i class="fas fa-certificate"></i>
+          <span>Certifié QUALIOPI</span>
+        </div>
+      </div>
+
+      <!-- Liens rapides -->
+      <div class="footer-links">
+        <h3>Liens rapides</h3>
+        <ul>
+          <li><a routerLink="/"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+          <li><a routerLink="/about"><i class="fas fa-chevron-right"></i> À propos</a></li>
+          <li><a routerLink="/produits-list"><i class="fas fa-chevron-right"></i> Nos formations</a></li>
+          <li><a routerLink="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          <li><a routerLink="/login"><i class="fas fa-chevron-right"></i> Espace admin</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact info -->
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <ul>
+          <li>
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <span>Téléphone</span>
+              <a href="tel:+226 78 04 80 10">+226 78 04 80 10 /</a>
+              <a href="tel:+226 05 24 15 15">+226 05 24 15 15</a>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <div>
+              <span>Email</span>
+              <a href="mailto:contact@focus-supply.com">contact&#64;focus-supply.com</a>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <span>Adresse</span>
+              <p>Ouagadougou, Burkina Faso</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Horaires & Newsletter -->
+      <div class="footer-hours">
+        <h3>Horaires d'ouverture</h3>
+        <ul class="hours-list">
+          <li>
+            <span>Lundi - Vendredi</span>
+            <span>08:00 - 18:00</span>
+          </li>
+          <li>
+            <span>Samedi</span>
+            <span>09:00 - 13:00</span>
+          </li>
+          <li>
+            <span>Dimanche</span>
+            <span>Fermé</span>
+          </li>
+        </ul>
+
+        <div class="newsletter-mini">
+          <h4>Newsletter</h4>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Votre email" #newsletterEmail>
+            <button (click)="subscribeNewsletter(newsletterEmail.value)">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <h4>Suivez-nous</h4>
+        <div class="social-links">
+          <a href="https://wa.me/22671608662" target="_blank" class="social-link whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="#" target="_blank" class="social-link facebook">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="#" target="_blank" class="social-link instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="#" target="_blank" class="social-link linkedin">
+            <i class="fab fa-linkedin-in"></i>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <p>&copy; 2024 Focus Supply Training - Tous droits réservés</p>
+        <p class="developer-credit">
+          Développé par <strong>TRAORE Faycal</strong>
+          <i class="fas fa-code"></i> |
+          <i class="fas fa-phone-alt"></i> +226 71 60 86 62
+        </p>
+      </div>
+
+      <div class="footer-backtop">
+        <button (click)="scrollToTop()" class="back-to-top">
+          <i class="fas fa-arrow-up"></i>
+          <span>Haut</span>
+        </button>
+      </div>
+    </div>
   </div>
 </footer>

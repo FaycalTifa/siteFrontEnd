@@ -7,7 +7,7 @@ import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 })
 export class FileUploadService {
 
-  private baseUrl = 'http://localhost:9999';
+  private baseUrl = 'http://localhost:8080';
 
   /**
    * Corrige l'URL de l'image si nécessaire

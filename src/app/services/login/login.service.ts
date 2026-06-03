@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class LoginService {
 
-  private apiUrl = 'http://localhost:9999/api/auth';
+  private apiUrl = 'http://localhost:8080/api/auth';
   private currentUserSubject = new BehaviorSubject<LoginResponse | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
