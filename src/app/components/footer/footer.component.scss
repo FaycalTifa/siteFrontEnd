@@ -1,9 +1,11 @@
-// Variables
-$primary: #2c5530;
-$primary-light: #4a7c59;
-$secondary: #8fb996;
-$accent: #ffd700;
-$dark: #1a2e1d;
+// ========== VARIABLES - COULEURS DU LOGO ==========
+$primary-dark: #1a365d;     // Bleu Foncé - Header, titres, fonds principaux
+$primary: #3182ce;           // Bleu Clair - Badges, icônes, accents
+$primary-light: #63b3ed;     // Bleu très clair - Survols, dégradés doux
+$accent: #e67e22;            // ORANGE - Boutons d'action, CTA
+$accent-dark: #d35400;       // Orange foncé - Hover boutons
+$secondary: #f1c40f;         // Jaune/orange - Accents secondaires
+
 $text-dark: #2d3748;
 $text-light: #6c757d;
 $white: #ffffff;
@@ -11,8 +13,14 @@ $gray-bg: #f8f9fa;
 $border-color: rgba(255, 255, 255, 0.1);
 $transition: all 0.3s ease;
 
+// Dégradés
+$gradient-primary: linear-gradient(135deg, $primary-dark, $primary);
+$gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
+$gradient-footer: linear-gradient(135deg, $primary-dark 0%, $primary 100%);
+
+// ========== FOOTER ==========
 .site-footer {
-  background: linear-gradient(135deg, $dark 0%, $primary 100%);
+  background: $gradient-footer;
   color: $white;
   padding-top: 3rem;
   margin-top: auto;
@@ -35,7 +43,7 @@ $transition: all 0.3s ease;
   padding: 0 2rem;
 }
 
-// Footer Grid
+// ========== FOOTER GRID ==========
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -63,7 +71,7 @@ $transition: all 0.3s ease;
   }
 }
 
-// Logo Section
+// ========== LOGO SECTION ==========
 .footer-about {
   .footer-logo {
     display: flex;
@@ -74,7 +82,7 @@ $transition: all 0.3s ease;
     .logo-image {
       height: 45px;
       width: auto;
-      filter: brightness(0) invert(1);
+    //  filter: brightness(0) invert(1);
     }
 
     .logo-text {
@@ -119,7 +127,7 @@ $transition: all 0.3s ease;
   }
 }
 
-// Footer Links
+// ========== FOOTER LINKS ==========
 .footer-links {
   ul {
     list-style: none;
@@ -156,7 +164,7 @@ $transition: all 0.3s ease;
   }
 }
 
-// Footer Contact
+// ========== FOOTER CONTACT ==========
 .footer-contact {
   ul {
     list-style: none;
@@ -209,7 +217,7 @@ $transition: all 0.3s ease;
   }
 }
 
-// Footer Hours
+// ========== FOOTER HOURS ==========
 .footer-hours {
   .hours-list {
     list-style: none;
@@ -257,19 +265,20 @@ $transition: all 0.3s ease;
         transition: $transition;
 
         i {
-          color: $primary;
+          color: $white;
           font-size: 0.9rem;
         }
 
         &:hover {
           transform: scale(1.1);
+          background: $accent-dark;
         }
       }
     }
   }
 }
 
-// Footer Bottom
+// ========== FOOTER BOTTOM ==========
 .footer-bottom {
   padding: 2rem 0;
   display: flex;
@@ -374,14 +383,14 @@ $transition: all 0.3s ease;
 
       &:hover {
         background: $accent;
-        color: $primary;
+        color: $white;
         transform: translateY(-3px);
       }
     }
   }
 }
 
-// Responsive
+// ========== RESPONSIVE ==========
 @media (max-width: 1024px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -426,7 +435,7 @@ $transition: all 0.3s ease;
   }
 }
 
-// Animation d'entrée
+// ========== ANIMATION D'ENTRÉE ==========
 @keyframes fadeInUp {
   from {
     opacity: 0;

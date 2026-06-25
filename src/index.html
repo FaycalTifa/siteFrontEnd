@@ -2,25 +2,33 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Focus Supply Training - Formations en Intelligence Émotionnelle et Achats</title>
+  <title>Focus Supply & Training - Formations en Intelligence Émotionnelle et Achats</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Focus Supply Training - Expert en formation en Intelligence Émotionnelle et optimisation des achats et approvisionnements">
+  <meta name="description" content="Focus Supply & Training - Expert en formation en Intelligence Émotionnelle et optimisation des achats et approvisionnements">
   <meta name="keywords" content="formation, intelligence émotionnelle, achats, approvisionnements, leadership, coaching">
-  <meta name="author" content="Focus Supply Training">
+  <meta name="author" content="Focus Supply & Training">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png">
 
-  <!-- Font Awesome pour les icônes -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset et style de base */
+    /* Variables Couleurs Orange */
+    :root {
+      --primary: #e67e22;
+      --primary-light: #f39c12;
+      --primary-dark: #d35400;
+      --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    }
+
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -45,13 +53,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+      background: var(--gradient-primary);
       color: white;
       z-index: 9999;
       transition: opacity 0.5s ease;
     }
 
-    /* Logo réel */
     .loading-logo-real {
       width: 180px;
       height: auto;
@@ -60,7 +67,6 @@
       filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
     }
 
-    /* SVG fallback (si l'image ne charge pas) */
     .loading-logo-fallback {
       width: 120px;
       height: 120px;
@@ -106,7 +112,6 @@
       }
     }
 
-    /* Cacher l'écran de chargement */
     .loading-screen.hide {
       opacity: 0;
       visibility: hidden;
@@ -115,35 +120,30 @@
 </head>
 <body>
 
-<!-- Écran de chargement avec le vrai logo -->
 <div class="loading-screen" id="loadingScreen">
-  <!-- Vrai logo PNG -->
   <img
     src="assets/images/logo.png"
-    alt="Focus Supply Training"
+    alt="Focus Supply & Training"
     class="loading-logo-real"
     onerror="this.style.display='none'; document.getElementById('fallbackLogo').style.display='block'">
 
-  <!-- Fallback SVG si l'image ne charge pas -->
   <div class="loading-logo-fallback" id="fallbackLogo" style="display: none;">
     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="50" cy="50" r="45" stroke="white" stroke-width="2" fill="none"/>
       <path d="M50 20 L65 45 L55 45 L55 80 L45 80 L45 45 L35 45 Z" fill="white"/>
-      <text x="50" y="70" text-anchor="middle" fill="#2c5530" font-size="12" font-weight="bold">FST</text>
+      <text x="50" y="70" text-anchor="middle" fill="var(--primary)" font-size="12" font-weight="bold">FST</text>
     </svg>
   </div>
 
   <div class="loading-spinner"></div>
-  <p class="loading-text">Focus Supply Training</p>
+  <p class="loading-text">Focus Supply & Training</p>
   <p class="loading-subtext">Là où l'efficience opérationnelle rencontre l'excellence humaine</p>
 </div>
 
 <app-root></app-root>
 
 <script>
-  // Cacher l'écran de chargement quand l'application est prête
   document.addEventListener('DOMContentLoaded', function() {
-    // Simuler le chargement des ressources
     setTimeout(function() {
       const loadingScreen = document.getElementById('loadingScreen');
       if (loadingScreen) {
@@ -155,7 +155,6 @@
     }, 800);
   });
 
-  // Alternative : attendre que Angular soit complètement chargé
   window.addEventListener('load', function() {
     setTimeout(function() {
       const loadingScreen = document.getElementById('loadingScreen');

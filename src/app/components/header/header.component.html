@@ -3,10 +3,10 @@
     <!-- Logo et Nom de l'entreprise -->
     <div class="logo-section">
       <a routerLink="/" class="logo-link">
-        <img src="assets/images/logo.png" alt="Focus Supply Training" class="logo-image">
+        <img src="assets/images/logo.png" alt="Focus Supply & Training" class="logo-image">
         <div class="logo-text">
           <span class="logo-title">FOCUS SUPPLY</span>
-          <span class="logo-subtitle">TRAINING</span>
+          <span class="logo-subtitle">& TRAINING</span>
         </div>
       </a>
     </div>
@@ -17,18 +17,41 @@
         <i class="fas fa-home"></i>
         <span>Accueil</span>
       </a>
+
       <a routerLink="/about" class="nav-link" routerLinkActive="active">
         <i class="fas fa-info-circle"></i>
         <span>À propos</span>
       </a>
+
+      <!-- Menu déroulant Nos offres (au clic) -->
+      <div class="dropdown" [class.open]="isDropdownOpen">
+        <a class="nav-link dropdown-toggle" (click)="toggleDropdown()">
+          <i class="fas fa-gift"></i>
+          <span>Nos offres</span>
+          <i class="fas fa-chevron-down dropdown-icon" [class.rotated]="isDropdownOpen"></i>
+        </a>
+        <div class="dropdown-menu" (click)="$event.stopPropagation()">
+          <a routerLink="/formations/ie" class="dropdown-item" (click)="closeDropdown()">
+            <i class="fas fa-brain"></i>
+            <span>🔹 Intelligence émotionnelle & développement du capital humain</span>
+          </a>
+          <a routerLink="/formations/achats" class="dropdown-item" (click)="closeDropdown()">
+            <i class="fas fa-truck"></i>
+            <span>🔹 Achats & approvisionnements</span>
+          </a>
+        </div>
+      </div>
+
       <a routerLink="/produits-list" class="nav-link" routerLinkActive="active">
-        <i class="fas fa-shopping-bag"></i>
-        <span>Produits</span>
+        <i class="fas fa-briefcase"></i>
+        <span>Décryptages</span>
       </a>
+
       <a routerLink="/contact" class="nav-link" routerLinkActive="active">
         <i class="fas fa-envelope"></i>
         <span>Contact</span>
       </a>
+
       <a routerLink="/login" class="nav-link admin-btn" routerLinkActive="active">
         <i class="fas fa-pen-fancy"></i>
         <span>Publier</span>
@@ -49,18 +72,41 @@
       <i class="fas fa-home"></i>
       <span>Accueil</span>
     </a>
+
     <a routerLink="/about" (click)="toggleMenu()">
       <i class="fas fa-info-circle"></i>
       <span>À propos</span>
     </a>
+
+    <!-- Mobile: Nos offres (accordéon) -->
+    <div class="mobile-dropdown">
+      <div class="mobile-dropdown-header" (click)="toggleMobileOffres()">
+        <i class="fas fa-gift"></i>
+        <span>Nos offres</span>
+        <i class="fas fa-chevron-down" [class.rotated]="mobileOffresOpen"></i>
+      </div>
+      <div class="mobile-dropdown-content" [class.open]="mobileOffresOpen">
+        <a routerLink="/formations/ie" (click)="toggleMenu()" class="mobile-dropdown-item">
+          <i class="fas fa-brain"></i>
+          <span>🔹 Intelligence émotionnelle & développement du capital humain</span>
+        </a>
+        <a routerLink="/formations/achats" (click)="toggleMenu()" class="mobile-dropdown-item">
+          <i class="fas fa-truck"></i>
+          <span>🔹 Achats & approvisionnements</span>
+        </a>
+      </div>
+    </div>
+
     <a routerLink="/produits-list" (click)="toggleMenu()">
-      <i class="fas fa-shopping-bag"></i>
-      <span>Produits</span>
+      <i class="fas fa-briefcase"></i>
+      <span>Décryptages </span>
     </a>
+
     <a routerLink="/contact" (click)="toggleMenu()">
       <i class="fas fa-envelope"></i>
       <span>Contact</span>
     </a>
+
     <a routerLink="/login" (click)="toggleMenu()" class="mobile-admin">
       <i class="fas fa-pen-fancy"></i>
       <span>Publier</span>

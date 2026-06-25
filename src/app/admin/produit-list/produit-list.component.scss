@@ -1,8 +1,11 @@
-// Variables
-$primary: #2c5530;
-$primary-light: #4a7c59;
-$secondary: #8fb996;
-$dark: #1a2e1d;
+// ========== VARIABLES - COULEURS DU LOGO ==========
+$primary-dark: #1a365d;     // Bleu Foncé - Header, titres, fonds principaux
+$primary: #3182ce;           // Bleu Clair - Badges, icônes, accents
+$primary-light: #63b3ed;     // Bleu très clair - Survols, dégradés doux
+$accent: #e67e22;            // ORANGE - Boutons d'action, CTA
+$accent-dark: #d35400;       // Orange foncé - Hover boutons
+$secondary: #f1c40f;         // Jaune/orange - Accents secondaires
+
 $text-dark: #2d3748;
 $text-light: #4a5568;
 $white: #ffffff;
@@ -12,7 +15,11 @@ $shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
 $transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 $border-radius: 16px;
 
-// Animations
+// Dégradés
+$gradient-primary: linear-gradient(135deg, $primary-dark, $primary);
+$gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
+
+// ========== ANIMATIONS ==========
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
@@ -32,17 +39,17 @@ $border-radius: 16px;
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-// Container
+// ========== CONTAINER ==========
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-// Hero Section
+// ========== HERO SECTION ==========
 .products-hero {
   position: relative;
-  background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+  background: $gradient-primary;
   padding: 5rem 0 8rem;
   overflow: hidden;
 
@@ -96,7 +103,7 @@ $border-radius: 16px;
         left: 0;
         right: 0;
         height: 3px;
-        background: $secondary;
+        background: $accent;
         border-radius: 3px;
       }
     }
@@ -123,7 +130,7 @@ $border-radius: 16px;
   }
 }
 
-// Filters Card
+// ========== FILTERS CARD ==========
 .filters-card {
   background: $white;
   border-radius: $border-radius;
@@ -221,7 +228,7 @@ $border-radius: 16px;
         }
 
         &:hover {
-          background: $secondary;
+          background: $primary;
           color: $white;
           transform: translateY(-2px);
         }
@@ -239,7 +246,7 @@ $border-radius: 16px;
   }
 }
 
-// Products Grid
+// ========== PRODUCTS GRID ==========
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -284,7 +291,7 @@ $border-radius: 16px;
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: linear-gradient(135deg, $primary, $primary-light);
+    background: $gradient-accent;
     color: $white;
     padding: 0.3rem 0.8rem;
     border-radius: 50px;
@@ -319,7 +326,7 @@ $border-radius: 16px;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba($primary, 0.8);
+      background: rgba($primary-dark, 0.8);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -398,7 +405,7 @@ $border-radius: 16px;
         }
 
         .niveau-debutant { color: #27ae60; }
-        .niveau-intermediaire { color: #f39c12; }
+        .niveau-intermediaire { color: $accent; }
         .niveau-avance { color: #e74c3c; }
         .niveau-expert { color: #8e44ad; }
       }
@@ -409,6 +416,12 @@ $border-radius: 16px;
       color: $text-light;
       line-height: 1.5;
       margin-bottom: 1rem;
+      overflow: hidden;           /* Cache le texte qui dépasse */
+      display: -webkit-box;
+      -webkit-line-clamp: 3;      /* Limite à 3 lignes */
+      -webkit-box-orient: vertical;
+      word-wrap: break-word;
+      max-height: 4.5rem;         /* Hauteur max pour 3 lignes */
     }
 
     .product-footer {
@@ -420,7 +433,7 @@ $border-radius: 16px;
         .price-amount {
           font-size: 1.3rem;
           font-weight: 800;
-          color: $primary;
+          color: $accent;
         }
 
         .price-currency {
@@ -435,17 +448,17 @@ $border-radius: 16px;
         align-items: center;
         gap: 0.5rem;
         background: none;
-        border: 2px solid $primary;
+        border: 2px solid $accent;
         padding: 0.5rem 1rem;
         border-radius: 50px;
         font-size: 0.8rem;
         font-weight: 600;
-        color: $primary;
+        color: $accent;
         cursor: pointer;
         transition: $transition;
 
         &:hover {
-          background: $primary;
+          background: $accent;
           color: $white;
           transform: translateX(3px);
         }
@@ -454,7 +467,7 @@ $border-radius: 16px;
   }
 }
 
-// Loading State
+// ========== LOADING STATE ==========
 .loading-state {
   text-align: center;
   padding: 4rem;
@@ -479,7 +492,7 @@ $border-radius: 16px;
   }
 }
 
-// No Results
+// ========== NO RESULTS ==========
 .no-results {
   text-align: center;
   padding: 4rem;
@@ -507,7 +520,7 @@ $border-radius: 16px;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: $primary;
+    background: $gradient-accent;
     color: $white;
     border: none;
     padding: 0.8rem 1.5rem;
@@ -518,13 +531,13 @@ $border-radius: 16px;
     transition: $transition;
 
     &:hover {
-      background: $primary-light;
+      background: $accent-dark;
       transform: translateY(-2px);
     }
   }
 }
 
-// Results Count
+// ========== RESULTS COUNT ==========
 .results-count {
   text-align: center;
   padding: 1rem;
@@ -538,7 +551,9 @@ $border-radius: 16px;
   }
 }
 
-// Lightbox amélioré
+// ========== LIGHTBOX ==========
+// Dans produit-list.component.scss
+
 .image-lightbox {
   position: fixed;
   top: 0;
@@ -551,12 +566,14 @@ $border-radius: 16px;
   justify-content: center;
   z-index: 1000;
   animation: fadeIn 0.3s ease-out;
+  padding: 1rem;
 
   .lightbox-container {
     position: relative;
     max-width: 90%;
     max-height: 90%;
     width: 100%;
+    max-width: 1000px;
 
     .lightbox-content {
       display: grid;
@@ -565,21 +582,40 @@ $border-radius: 16px;
       background: $white;
       border-radius: $border-radius;
       overflow: hidden;
+      max-height: 85vh;
 
       .lightbox-image {
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          max-height: 85vh;
         }
       }
 
       .lightbox-details {
         padding: 2rem;
+        overflow-y: auto;  // Permet le défilement
+        max-height: 85vh;
+
+        // Personnalisation de la scrollbar
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: $gray-bg;
+          border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: $primary;
+          border-radius: 3px;
+        }
 
         h2 {
           font-size: 1.5rem;
-          color: $primary;
+          color: $primary-dark;
           margin-bottom: 1rem;
         }
 
@@ -607,8 +643,29 @@ $border-radius: 16px;
 
         .lightbox-description {
           color: $text-light;
-          line-height: 1.6;
+          line-height: 1.8;
           margin-bottom: 1.5rem;
+          font-size: 0.95rem;
+          white-space: pre-wrap;  // Garde les sauts de ligne
+          word-wrap: break-word;  // Coupe les mots trop longs
+          max-height: 200px;       // Hauteur max avec scroll
+          overflow-y: auto;        // Scroll si trop long
+          padding-right: 0.5rem;
+
+          // Personnalisation de la scrollbar de la description
+          &::-webkit-scrollbar {
+            width: 4px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background: $gray-bg;
+            border-radius: 2px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: $accent;
+            border-radius: 2px;
+          }
         }
 
         .lightbox-price {
@@ -617,7 +674,7 @@ $border-radius: 16px;
           .price {
             font-size: 1.8rem;
             font-weight: 800;
-            color: $primary;
+            color: $accent;
           }
         }
 
@@ -625,7 +682,7 @@ $border-radius: 16px;
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, $primary, $primary-light);
+          background: $gradient-accent;
           color: $white;
           border: none;
           padding: 0.8rem 1.5rem;
@@ -638,11 +695,13 @@ $border-radius: 16px;
           &:hover {
             transform: translateY(-2px);
             box-shadow: $shadow;
+            background: $accent-dark;
           }
         }
       }
     }
 
+    // Contrôles
     .lightbox-close {
       position: absolute;
       top: -50px;
@@ -656,7 +715,7 @@ $border-radius: 16px;
 
       &:hover {
         transform: scale(1.1);
-        color: $secondary;
+        color: $accent;
       }
     }
 
@@ -676,7 +735,7 @@ $border-radius: 16px;
       transition: $transition;
 
       &:hover {
-        background: $primary;
+        background: $accent;
         transform: translateY(-50%) scale(1.1);
       }
     }
@@ -691,7 +750,7 @@ $border-radius: 16px;
   }
 }
 
-// Responsive
+// ========== RESPONSIVE ==========
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;

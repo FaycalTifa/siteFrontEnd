@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="achats-hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">
+          <i class="fas fa-truck"></i>
+          Achats & Approvisionnements
+        </span>
+        <h1>Optimisez votre <span class="highlight">chaîne d'approvisionnement</span></h1>
+        <p>Des formations professionnelles pour maîtriser vos achats et approvisionnements</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section formations -->
+  <section class="formations-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nos formations en Achats & Approvisionnements</h2>
+        <p>Des programmes conçus pour les professionnels de la supply chain</p>
+      </div>
+
+      <div class="formations-grid">
+        <div class="formation-card" *ngFor="let formation of formations; let i = index" [style.animation-delay]="i * 0.1 + 's'">
+          <div class="card-icon">
+            <i [class]="formation.icon"></i>
+          </div>
+          <h3>{{ formation.title }}</h3>
+          <p>{{ formation.description }}</p>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avantages -->
+  <section class="advantages-section">
+    <div class="container">
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Réduction des coûts</h3>
+          <p>Jusqu'à 30% d'économies</p>
+        </div>
+        <div class="advantage-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Conformité garantie</h3>
+          <p>Processus normés</p>
+        </div>
+        <div class="advantage-card">
+          <i class="fas fa-globe"></i>
+          <h3>Vision globale</h3>
+          <p>Supply chain intégrée</p>
+        </div>
+        <div class="advantage-card">
+          <i class="fas fa-chart-pie"></i>
+          <h3>Performance mesurable</h3>
+          <p>Indicateurs précis</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+

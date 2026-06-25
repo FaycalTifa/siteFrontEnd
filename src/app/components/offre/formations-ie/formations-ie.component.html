@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="ie-hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">
+          <i class="fas fa-brain"></i>
+          Intelligence Émotionnelle
+        </span>
+        <h1>Développez votre <span class="highlight">quotient émotionnel</span></h1>
+        <p>Des formations pour maîtriser l'intelligence émotionnelle et booster votre leadership</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section formations -->
+  <section class="formations-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nos formations en Intelligence Émotionnelle</h2>
+        <p>Des programmes complets pour développer vos compétences émotionnelles</p>
+      </div>
+
+      <div class="formations-grid">
+        <div class="formation-card" *ngFor="let formation of formations; let i = index" [style.animation-delay]="i * 0.1 + 's'">
+          <div class="card-icon">
+            <i [class]="formation.icon"></i>
+          </div>
+          <h3>{{ formation.title }}</h3>
+          <p>{{ formation.description }}</p>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avantages -->
+  <section class="advantages-section">
+    <div class="container">
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <i class="fas fa-certificate"></i>
+          <h3>Formation</h3>
+          <p>Formation  reconnue</p>
+        </div>
+        <div class="advantage-card">
+          <i class="fas fa-users"></i>
+          <h3>Formateurs experts</h3>
+          <p>Professionnels expérimentés</p>
+        </div>
+        <div class="advantage-card">
+          <i class="fas fa-laptop"></i>
+          <h3>100% pratique</h3>
+          <p>Cas concrets et mises en situation</p>
+        </div>
+        <div class="advantage-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Suivi personnalisé</h3>
+          <p>Accompagnement après formation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+

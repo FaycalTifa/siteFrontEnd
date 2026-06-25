@@ -27,37 +27,37 @@ export class AboutComponent implements OnInit {
     { value: '50+', label: 'Formations proposées', icon: 'fas fa-graduation-cap' }
   ];
 
-  // Valeurs
+  // Valeurs - Version Orange
   values = [
     {
       icon: 'fas fa-heart',
       title: 'Humain au Centre',
       description: 'Placer l\'épanouissement et l\'intelligence émotionnelle au cœur de chaque transformation',
-      color: '#2c5530'
+      color: '#e67e22'  // Orange principal
     },
     {
       icon: 'fas fa-leaf',
       title: 'Engagement RSE',
       description: 'Promouvoir des pratiques d\'affaires responsables et respectueuses',
-      color: '#4a7c59'
+      color: '#f39c12'  // Orange clair
     },
     {
       icon: 'fas fa-chart-line',
       title: 'Excellence Opérationnelle',
       description: 'Allier rigueur stratégique, optimisation des ressources et culture du résultat',
-      color: '#8fb996'
+      color: '#e67e22'  // Orange principal
     },
     {
       icon: 'fas fa-seedling',
       title: 'Impact Durable',
       description: 'Des solutions viables qui garantissent la croissance à long terme',
-      color: '#2c5530'
+      color: '#f39c12'  // Orange clair
     },
     {
       icon: 'fas fa-hand-holding-heart',
       title: 'Bienveillance',
       description: 'Créer des environnements de travail sains tout en visant la performance globale',
-      color: '#4a7c59'
+      color: '#e67e22'  // Orange principal
     }
   ];
 

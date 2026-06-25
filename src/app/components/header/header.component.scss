@@ -1,22 +1,33 @@
-// Variables
-$primary: #2c5530;
-$primary-light: #4a7c59;
-$secondary: #8fb996;
-$accent: #ffd700;
-$white: #ffffff;
-$shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-$transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+// ========== VARIABLES - COULEURS DU LOGO ==========
+$primary-dark: #1a365d;     // Bleu Foncé - Header, titres, fonds principaux
+$primary: #3182ce;           // Bleu Clair - Badges, icônes, accents
+$primary-light: #63b3ed;     // Bleu très clair - Survols, dégradés doux
+$accent: #e67e22;            // ORANGE - Boutons d'action, CTA
+$accent-dark: #d35400;       // Orange foncé - Hover boutons
+$secondary: #f1c40f;         // Jaune/orange - Accents secondaires
 
+$white: #ffffff;
+$text-dark: #2d3748;
+$text-light: #6c757d;
+$shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+$shadow-hover: 0 8px 30px rgba(230, 126, 34, 0.15);
+$transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+$border-radius: 16px;
+
+// Dégradés
+$gradient-primary: linear-gradient(135deg, $primary-dark, $primary);
+$gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
+
+// ========== HEADER ==========
 .site-header {
-  background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+  background: $gradient-primary;
   color: $white;
   padding: 0.8rem 0;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 9999;
   box-shadow: $shadow;
-  backdrop-filter: blur(10px);
 
   .container {
     max-width: 1280px;
@@ -27,7 +38,7 @@ $transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     align-items: center;
   }
 
-  // Logo Section
+  // ========== LOGO SECTION ==========
   .logo-section {
     .logo-link {
       display: flex;
@@ -69,7 +80,7 @@ $transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
   }
 
-  // Navigation Desktop
+  // ========== NAVIGATION DESKTOP ==========
   .main-nav {
     display: flex;
     gap: 0.5rem;
@@ -147,7 +158,103 @@ $transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
   }
 
-  // Mobile Menu Button
+  // ========== DROPDOWN MENU ==========
+  // ========== DROPDOWN MENU ==========
+  .dropdown {
+    position: relative;
+
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+
+      .dropdown-icon {
+        font-size: 0.7rem;
+        transition: transform 0.3s ease;
+
+        &.rotated {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    // Afficher le menu au clic (via la classe .open)
+    &.open .dropdown-menu {
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    &.open .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 360px;
+      background: $white;
+      border-radius: $border-radius;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: $transition;
+      z-index: 10000;
+      padding: 0.5rem 0;
+      margin-top: 0.5rem;
+
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.8rem 1rem;
+        text-decoration: none;
+        transition: $transition;
+        cursor: pointer;
+
+        i {
+          width: 24px;
+          color: $primary;
+          font-size: 1rem;
+        }
+
+        span {
+          flex: 1;
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: $text-dark;
+          line-height: 1.4;
+        }
+
+        &:hover {
+          background: rgba($primary, 0.1);
+
+          span {
+            color: $primary;
+          }
+
+          i {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+
+  // ========== SUPPRIMER LE HOVER POUR LE DROPDOWN ==========
+  // On garde le hover uniquement pour l'effet visuel, pas pour l'ouverture
+  .dropdown-toggle:hover {
+    background: rgba($white, 0.15);
+    transform: translateY(-2px);
+  }
+
+  // ========== MOBILE MENU BUTTON ==========
   .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -156,7 +263,7 @@ $transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
     padding: 0.5rem;
     gap: 5px;
-    z-index: 1001;
+    z-index: 10001;
 
     span {
       width: 25px;
@@ -181,7 +288,7 @@ $transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
   }
 
-  // Mobile Navigation
+  // ========== MOBILE NAVIGATION ==========
   .mobile-nav {
     position: fixed;
     top: 0;
@@ -189,12 +296,12 @@ $transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     width: 80%;
     max-width: 300px;
     height: 100vh;
-    background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+    background: $gradient-primary;
     flex-direction: column;
     padding: 5rem 1.5rem 2rem;
     transition: $transition;
     box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+    z-index: 10000;
 
     &.active {
       right: 0;
@@ -235,26 +342,76 @@ $transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 }
 
-// Backdrop overlay for mobile menu
-.mobile-nav-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: $transition;
+// ========== MOBILE DROPDOWN ==========
+.mobile-nav {
+  .mobile-dropdown {
+    border-bottom: 1px solid rgba($white, 0.1);
 
-  &.active {
-    opacity: 1;
-    visibility: visible;
+    .mobile-dropdown-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      cursor: pointer;
+
+      i:first-child {
+        width: 25px;
+      }
+
+      span {
+        flex: 1;
+      }
+
+      i:last-child {
+        transition: transform 0.3s ease;
+
+        &.rotated {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .mobile-dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: rgba($white, 0.05);
+
+      &.open {
+        max-height: 300px;
+      }
+
+      .mobile-dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem 1rem 0.8rem 2rem;
+        text-decoration: none;
+
+        i {
+          width: 25px;
+          font-size: 0.9rem;
+        }
+
+        span {
+          flex: 1;
+          font-size: 0.85rem;
+          color: rgba($white, 0.9);
+        }
+
+        &:hover {
+          background: rgba($white, 0.1);
+
+          span {
+            color: $white;
+          }
+        }
+      }
+    }
   }
 }
 
-// Responsive
+// ========== RESPONSIVE ==========
 @media (max-width: 968px) {
   .main-nav {
     display: none !important;
@@ -295,7 +452,7 @@ $transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 }
 
-// Animation d'entrée
+// ========== ANIMATION D'ENTRÉE ==========
 @keyframes slideDown {
   from {
     transform: translateY(-100%);

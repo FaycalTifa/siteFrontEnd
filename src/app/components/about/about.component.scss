@@ -1,8 +1,11 @@
-// Variables
-$primary: #2c5530;
-$primary-light: #4a7c59;
-$secondary: #8fb996;
-$dark: #1a2e1d;
+// ========== VARIABLES - COULEURS DU LOGO ==========
+$primary-dark: #1a365d;     // Bleu Foncé - Autorité, sérieux (logo principal)
+$primary: #3182ce;           // Bleu Clair - Modernité, aération (logo secondaire)
+$primary-light: #63b3ed;     // Bleu très clair - Accents
+$accent: #e67e22;            // ORANGE - Action, conversion (logo accent)
+$accent-dark: #d35400;       // Orange foncé - Hover
+$secondary: #4299e1;         // Bleu secondaire
+
 $text-dark: #2d3748;
 $text-light: #4a5568;
 $white: #ffffff;
@@ -12,7 +15,11 @@ $shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
 $transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 $border-radius: 16px;
 
-// Animations
+// Dégradés
+$gradient-primary: linear-gradient(135deg, $primary-dark, $primary);
+$gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
+
+// ========== ANIMATIONS ==========
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
@@ -40,20 +47,21 @@ $border-radius: 16px;
   animation: slideInRight 0.8s ease-out forwards;
 }
 
-// Container
+// ========== CONTAINER ==========
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-// Section Header
+// ========== SECTION HEADER ==========
 .section-header {
+  text-align: center;
   margin-bottom: 3rem;
 
   .section-badge {
     display: inline-block;
-    background: linear-gradient(135deg, $primary, $primary-light);
+    background: $gradient-primary;
     color: $white;
     padding: 0.3rem 1rem;
     border-radius: 50px;
@@ -64,7 +72,7 @@ $border-radius: 16px;
 
   h2 {
     font-size: 2.5rem;
-    color: $primary;
+    color: $primary-dark;
     margin-bottom: 1rem;
   }
 
@@ -80,14 +88,15 @@ $border-radius: 16px;
   text-align: center;
 }
 
-// Hero Section
+// ========== HERO SECTION ==========
 .about-hero {
   min-height: 90vh;
   position: relative;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, rgba($primary, 0.05) 0%, rgba($primary-light, 0.1) 100%);
+  background: linear-gradient(135deg, rgba($primary-dark, 0.05) 0%, rgba($primary, 0.1) 100%);
   padding: 4rem 0;
+  margin-top: 60px;
 
   .container {
     display: flex;
@@ -99,6 +108,17 @@ $border-radius: 16px;
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-logo {
+      max-width: 180px;
+      height: auto;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+    }
 
     .hero-badge {
       display: inline-block;
@@ -117,7 +137,7 @@ $border-radius: 16px;
       margin-bottom: 1.5rem;
 
       .highlight {
-        background: linear-gradient(135deg, $primary, $primary-light);
+        background: $gradient-primary;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -127,7 +147,7 @@ $border-radius: 16px;
     .hero-subtitle {
       font-size: 1.3rem;
       font-weight: 600;
-      color: $primary-light;
+      color: $primary;
       margin-bottom: 1rem;
     }
 
@@ -142,6 +162,7 @@ $border-radius: 16px;
       display: flex;
       gap: 1rem;
       justify-content: center;
+      flex-wrap: wrap;
 
       .btn-primary, .btn-outline {
         display: inline-flex;
@@ -155,13 +176,14 @@ $border-radius: 16px;
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, $primary, $primary-light);
+        background: $gradient-accent;
         color: $white;
         box-shadow: $shadow;
 
         &:hover {
           transform: translateY(-3px);
           box-shadow: $shadow-hover;
+          background: $accent-dark;
         }
       }
 
@@ -199,7 +221,7 @@ $border-radius: 16px;
       .stat-icon {
         width: 50px;
         height: 50px;
-        background: linear-gradient(135deg, $primary, $primary-light);
+        background: $gradient-primary;
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -215,7 +237,7 @@ $border-radius: 16px;
       .stat-number {
         font-size: 2rem;
         font-weight: 800;
-        color: $primary;
+        color: $primary-dark;
       }
 
       .stat-label {
@@ -226,7 +248,120 @@ $border-radius: 16px;
   }
 }
 
-// Mission & Vision
+// ========== SHOWCASE SECTION ==========
+.showcase-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, $white 0%, $gray-bg 100%);
+
+  .showcase-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .showcase-image {
+    position: relative;
+
+    .showcase-img {
+      width: 100%;
+      border-radius: $border-radius;
+      box-shadow: $shadow-hover;
+      transition: $transition;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: $gradient-accent;
+      color: $white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: $shadow;
+
+      i {
+        font-size: 1.5rem;
+      }
+
+      span {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .showcase-text {
+    .section-badge {
+      display: inline-block;
+      background: $gradient-primary;
+      color: $white;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: $primary-dark;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $text-light;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .impact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .impact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        i {
+          width: 50px;
+          height: 50px;
+          background: rgba($primary, 0.1);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.3rem;
+          color: $primary;
+        }
+
+        div {
+          strong {
+            display: block;
+            font-size: 1rem;
+            color: $primary-dark;
+          }
+
+          span {
+            font-size: 0.85rem;
+            color: $text-light;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ========== MISSION & VISION ==========
 .mission-vision {
   padding: 5rem 0;
   background: $white;
@@ -251,7 +386,7 @@ $border-radius: 16px;
     .card-icon {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, $primary, $primary-light);
+      background: $gradient-primary;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -266,7 +401,7 @@ $border-radius: 16px;
 
     h2 {
       font-size: 1.8rem;
-      color: $primary;
+      color: $primary-dark;
       margin-bottom: 1rem;
     }
 
@@ -283,6 +418,7 @@ $border-radius: 16px;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      margin-top: 1rem;
 
       i {
         color: $primary;
@@ -298,7 +434,7 @@ $border-radius: 16px;
   }
 }
 
-// Values Section
+// ========== VALUES SECTION ==========
 .values-section {
   padding: 5rem 0;
   background: $gray-bg;
@@ -325,6 +461,7 @@ $border-radius: 16px;
       .value-icon {
         width: 70px;
         height: 70px;
+        background: $gradient-primary;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -339,7 +476,7 @@ $border-radius: 16px;
 
       h3 {
         font-size: 1.2rem;
-        color: $primary;
+        color: $primary-dark;
         margin-bottom: 1rem;
       }
 
@@ -352,10 +489,10 @@ $border-radius: 16px;
   }
 }
 
-// Approach Section
+// ========== APPROACH SECTION ==========
 .approach-section {
   padding: 5rem 0;
-  background: linear-gradient(135deg, $primary, $dark);
+  background: $gradient-primary;
   color: $white;
 
   .approach-content {
@@ -455,7 +592,7 @@ $border-radius: 16px;
   }
 }
 
-// Expertise Section
+// ========== EXPERTISE SECTION ==========
 .expertise-section {
   padding: 5rem 0;
   background: $white;
@@ -479,7 +616,7 @@ $border-radius: 16px;
       .expertise-icon {
         width: 60px;
         height: 60px;
-        background: linear-gradient(135deg, $primary, $primary-light);
+        background: $gradient-primary;
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -494,7 +631,7 @@ $border-radius: 16px;
 
       h3 {
         font-size: 1.3rem;
-        color: $primary;
+        color: $primary-dark;
         margin-bottom: 0.5rem;
       }
 
@@ -516,7 +653,7 @@ $border-radius: 16px;
           color: $text-light;
 
           i {
-            color: $primary-light;
+            color: $primary;
           }
         }
       }
@@ -524,68 +661,93 @@ $border-radius: 16px;
   }
 }
 
-// Why Us Section
+// ========== WHY US SECTION ==========
 .why-us {
   padding: 5rem 0;
-  background: $gray-bg;
+  background: $white;
 
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+  .promise-container {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba($primary-dark, 0.05) 0%, rgba($primary, 0.1) 100%);
+    border-radius: $border-radius;
 
-    .why-card {
-      background: $white;
+    .promise-content {
+      max-width: 800px;
+      margin: 0 auto;
       text-align: center;
-      padding: 2rem;
-      border-radius: $border-radius;
-      transition: $transition;
 
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: $shadow;
+      .promise-text {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: $text-dark;
+
+        strong {
+          color: $accent;
+          font-weight: 700;
+        }
       }
+    }
+  }
 
-      .why-icon {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, $primary, $primary-light);
-        border-radius: 50%;
+  .why-choose-container {
+    .why-choose-list {
+      max-width: 700px;
+      margin: 0 auto;
+
+      .choose-item {
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        margin-bottom: 1rem;
+        background: $gray-bg;
+        border-radius: 12px;
+        transition: $transition;
 
         i {
           font-size: 1.5rem;
-          color: $white;
+          color: $accent;
+          flex-shrink: 0;
         }
-      }
 
-      h3 {
-        font-size: 1.1rem;
-        color: $primary;
-        margin-bottom: 0.5rem;
-      }
+        span {
+          font-size: 1rem;
+          color: $text-dark;
+          line-height: 1.5;
 
-      p {
-        font-size: 0.85rem;
-        color: $text-light;
+          strong {
+            color: $primary-dark;
+          }
+        }
+
+        &:hover {
+          transform: translateX(10px);
+          background: rgba($accent, 0.1);
+          box-shadow: $shadow;
+        }
       }
     }
   }
 }
 
-// CTA Section
+// ========== CTA SECTION ==========
 .cta-section {
   padding: 5rem 0;
-  background: linear-gradient(135deg, $primary, $dark);
+  background: $gradient-primary;
   color: $white;
 
   .cta-content {
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
+
+    .cta-logo {
+      max-width: 120px;
+      margin-bottom: 1.5rem;
+      filter: brightness(0) invert(1);
+      display: inline-block;
+    }
 
     h2 {
       font-size: 2.5rem;
@@ -602,6 +764,7 @@ $border-radius: 16px;
       display: flex;
       gap: 1rem;
       justify-content: center;
+      flex-wrap: wrap;
 
       .btn-primary, .btn-outline-light {
         display: inline-flex;
@@ -616,9 +779,11 @@ $border-radius: 16px;
 
       .btn-primary {
         background: $white;
-        color: $primary;
+        color: $primary-dark;
 
         &:hover {
+          background: $accent;
+          color: $white;
           transform: translateY(-3px);
           box-shadow: $shadow-hover;
         }
@@ -631,7 +796,7 @@ $border-radius: 16px;
 
         &:hover {
           background: $white;
-          color: $primary;
+          color: $primary-dark;
           transform: translateY(-3px);
         }
       }
@@ -644,7 +809,7 @@ $border-radius: 16px;
   }
 }
 
-// Responsive
+// ========== RESPONSIVE ==========
 @media (max-width: 1024px) {
   .hero-stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -662,17 +827,22 @@ $border-radius: 16px;
     grid-template-columns: 1fr !important;
   }
 
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+  .showcase-content {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .showcase-image .image-caption {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    margin-top: 1rem;
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
   .hero-stats-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .why-grid {
     grid-template-columns: 1fr !important;
   }
 
@@ -699,167 +869,9 @@ $border-radius: 16px;
   .stat-circle .stat-label {
     white-space: normal !important;
   }
-}
-// Logo dans hero
-.logo-container {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
 
-.hero-logo {
-  max-width: 180px;
-  height: auto;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
-}
-
-// CTA Logo
-.cta-logo {
-  max-width: 120px;
-  margin-bottom: 1.5rem;
-  filter: brightness(0) invert(1);
-  display: inline-block;
-}
-
-// Showcase Section (image5.png)
-.showcase-section {
-  padding: 5rem 0;
-  background: linear-gradient(135deg, $white 0%, $gray-bg 100%);
-
-  .showcase-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .showcase-image {
-    position: relative;
-
-    .showcase-img {
-      width: 100%;
-      border-radius: $border-radius;
-      box-shadow: $shadow-hover;
-      transition: $transition;
-
-      &:hover {
-        transform: scale(1.02);
-      }
-    }
-
-    .image-caption {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      background: linear-gradient(135deg, $primary, $primary-light);
-      color: $white;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: $shadow;
-
-      i {
-        font-size: 1.5rem;
-      }
-
-      span {
-        font-weight: 600;
-        font-size: 0.9rem;
-      }
-    }
-  }
-
-  .showcase-text {
-    .section-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, $primary, $primary-light);
-      color: $white;
-      padding: 0.3rem 1rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-size: 2rem;
-      color: $primary;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      color: $text-light;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .impact-items {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-
-      .impact-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-
-        i {
-          width: 50px;
-          height: 50px;
-          background: rgba($primary, 0.1);
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.3rem;
-          color: $primary;
-        }
-
-        div {
-          strong {
-            display: block;
-            font-size: 1rem;
-            color: $primary;
-          }
-
-          span {
-            font-size: 0.85rem;
-            color: $text-light;
-          }
-        }
-      }
-    }
-  }
-}
-
-// Responsive pour la nouvelle section
-@media (max-width: 1024px) {
-  .showcase-content {
-    grid-template-columns: 1fr !important;
-    text-align: center;
-  }
-
-  .showcase-image .image-caption {
-    position: relative;
-    bottom: 0;
-    right: 0;
-    margin-top: 1rem;
-    justify-content: center;
-  }
-
-  .impact-items {
-    align-items: center;
-  }
-
-  .impact-item {
-    text-align: left;
-  }
-}
-
-@media (max-width: 768px) {
   .hero-logo {
-    max-width: 120px;
+    max-width: 120px !important;
   }
 
   .showcase-text h2 {
@@ -869,5 +881,35 @@ $border-radius: 16px;
   .impact-item {
     flex-direction: column;
     text-align: center;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .why-choose-list .choose-item {
+    padding: 0.8rem 1rem;
+
+    i {
+      font-size: 1.2rem;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+
+  .hero-logo {
+    max-width: 100px !important;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem !important;
   }
 }

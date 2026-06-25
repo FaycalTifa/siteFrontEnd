@@ -1,10 +1,16 @@
-/* Variables CSS Modernes */
+/* ========== VARIABLES CSS MODERNES - COULEURS DU LOGO ========== */
 :root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --accent-color: #ff6b6b;
+  --primary-dark: #1a365d;     /* Bleu Foncé - Header, footer, titres */
+  --primary: #3182ce;           /* Bleu Clair - Badges, icônes, accents */
+  --primary-light: #63b3ed;     /* Bleu très clair - Survols, dégradés doux */
+  --accent: #e67e22;            /* ORANGE - Boutons, actions, CTA */
+  --accent-dark: #d35400;       /* Orange foncé - Hover */
+
+  --gradient-primary: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+
   --text-dark: #2d3748;
-  --text-light: #718096;
+  --text-light: #4a5568;
   --white: #ffffff;
   --light-bg: #f8f9fa;
   --shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -13,7 +19,7 @@
   --border-radius: 16px;
 }
 
-/* Reset et Base */
+/* ========== RESET ET BASE ========== */
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +33,7 @@ body {
   background-color: var(--light-bg);
 }
 
-/* Animations */
+/* ========== ANIMATIONS ========== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -39,14 +45,13 @@ body {
   }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideInLeft {
@@ -60,9 +65,46 @@ body {
   }
 }
 
-/* Classes d'Animation */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========== CLASSES D'ANIMATION ========== */
 .animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
 }
 
 .animate-float {
@@ -73,11 +115,7 @@ body {
   animation: pulse 3s ease-in-out infinite;
 }
 
-.animate-slide-in-left {
-  animation: slideInLeft 0.8s ease-out;
-}
-
-/* Effets de Hover */
+/* ========== EFFETS DE HOVER ========== */
 .hover-lift {
   transition: var(--transition);
 }
@@ -88,16 +126,35 @@ body {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 0 25px rgba(49, 130, 206, 0.3);
 }
 
-/* Composants Réutilisables */
+.hover-scale {
+  transition: var(--transition);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ========== COMPOSANTS RÉUTILISABLES ========== */
 .gradient-bg {
-  background: var(--primary-gradient);
+  background: var(--gradient-primary);
+}
+
+.gradient-bg-accent {
+  background: var(--gradient-accent);
 }
 
 .gradient-text {
-  background: var(--primary-gradient);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-accent {
+  background: var(--gradient-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -109,10 +166,16 @@ body {
   box-shadow: var(--shadow);
   transition: var(--transition);
   overflow: hidden;
+  background: var(--white);
+}
+
+.card-modern:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
 }
 
 .btn-gradient {
-  background: var(--primary-gradient);
+  background: var(--gradient-accent);
   border: none;
   color: white;
   padding: 12px 30px;
@@ -121,18 +184,40 @@ body {
   transition: var(--transition);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  cursor: pointer;
 }
 
 .btn-gradient:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 25px rgba(230, 126, 34, 0.3);
   color: white;
+  background: var(--accent-dark);
 }
 
-/* Navigation */
+.btn-outline-gradient {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 10px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn-outline-gradient:hover {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ========== NAVIGATION ========== */
 .navbar-brand {
   font-weight: 700;
   font-size: 1.8rem;
+  color: var(--white);
+  text-decoration: none;
 }
 
 .nav-link {
@@ -140,6 +225,8 @@ body {
   margin: 0 10px;
   position: relative;
   transition: var(--transition);
+  color: var(--white);
+  text-decoration: none;
 }
 
 .nav-link::after {
@@ -149,7 +236,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--white);
+  background: var(--accent);
   transition: var(--transition);
 }
 
@@ -158,12 +245,18 @@ body {
   width: 100%;
 }
 
-/* Hero Section */
+.nav-link:hover {
+  color: var(--accent);
+}
+
+/* ========== HERO SECTION ========== */
 .hero-section {
   min-height: 100vh;
-  background: var(--primary-gradient);
+  background: var(--gradient-primary);
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .hero-section::before {
@@ -181,14 +274,263 @@ body {
   z-index: 2;
 }
 
-/* Responsive */
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ========== SECTIONS ========== */
+.section {
+  padding: 5rem 0;
+}
+
+.section-dark {
+  background: var(--primary-dark);
+  color: var(--white);
+}
+
+.section-light {
+  background: var(--light-bg);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-dark);
+}
+
+.section-title-white {
+  color: var(--white);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+/* ========== BOUTONS ========== */
+.btn-primary-custom {
+  background: var(--gradient-accent);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3);
+  background: var(--accent-dark);
+}
+
+.btn-outline-custom {
+  background: transparent;
+  border: 2px solid var(--white);
+  color: var(--white);
+  padding: 10px 26px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn-outline-custom:hover {
+  background: var(--white);
+  color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ========== CARTES ========== */
+.card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--primary-dark);
+}
+
+.card-text {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ========== BADGES ========== */
+.badge-primary {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-accent {
+  background: var(--gradient-accent);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ========== FORMULAIRES ========== */
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+}
+
+/* ========== LOADER ========== */
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(49, 130, 206, 0.2);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-section {
     min-height: 80vh;
     text-align: center;
+    padding: 2rem 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
   }
 
   .nav-link {
     margin: 5px 0;
   }
+
+  .card-img-top {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .btn-gradient, .btn-outline-gradient {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ========== UTILITAIRES ========== */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.bg-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-accent {
+  background: var(--gradient-accent);
+}
+
+.rounded {
+  border-radius: var(--border-radius);
+}
+
+.shadow {
+  box-shadow: var(--shadow);
+}
+
+.shadow-hover {
+  transition: var(--transition);
+}
+
+.shadow-hover:hover {
+  box-shadow: var(--shadow-hover);
 }

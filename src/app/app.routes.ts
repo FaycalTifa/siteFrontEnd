@@ -9,6 +9,8 @@ import {HeaderComponent} from './components/header/header.component';
 import {LoginComponent} from './admin/login/login.component';
 import {ProduitFormComponent} from './admin/produit-form/produit-form.component';
 import {ProduitListComponent} from './admin/produit-list/produit-list.component';
+import {FormationsIEComponent} from './components/offre/formations-ie/formations-ie.component';
+import {FormationsAchatsComponent} from './components/offre/formations-achats/formations-achats.component';
 
 export const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -21,6 +23,8 @@ export const routes: Routes = [
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'login', component: LoginComponent }, // ✅ Route cohérente
   { path: 'accueil', component: AccueilComponent },
+  { path: 'formations/ie', component: FormationsIEComponent },
+  { path: 'formations/achats', component: FormationsAchatsComponent },
   { path: '**', redirectTo: '' }
 ];
 

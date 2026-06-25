@@ -1,0 +1,255 @@
+// ========== VARIABLES - COULEURS DU LOGO ==========
+$primary-dark: #1a365d;     // Bleu Foncé - Header, titres, fonds principaux
+$primary: #3182ce;           // Bleu Clair - Badges, icônes, accents
+$primary-light: #63b3ed;     // Bleu très clair - Survols, dégradés doux
+$accent: #e67e22;            // ORANGE - Boutons d'action, CTA
+$accent-dark: #d35400;       // Orange foncé - Hover boutons
+$secondary: #f1c40f;         // Jaune/orange - Accents secondaires
+
+$text-dark: #2d3748;
+$text-light: #6c757d;
+$white: #ffffff;
+$gray-bg: #f8f9fa;
+$shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+$shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+$transition: all 0.3s ease;
+$border-radius: 16px;
+
+// Dégradés
+$gradient-primary: linear-gradient(135deg, $primary-dark, $primary);
+$gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
+
+// ========== ANIMATIONS ==========
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ========== CONTAINER ==========
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// ========== HERO SECTION ==========
+.ie-hero {
+  background: $gradient-primary;
+  padding: 8rem 0 5rem;
+  text-align: center;
+  color: $white;
+  margin-top: 60px;
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba($white, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+
+    .highlight {
+      color: $accent;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+}
+
+// ========== FORMATIONS GRID ==========
+.formations-section {
+  padding: 5rem 0;
+  background: $gray-bg;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 2.5rem;
+      color: $primary-dark;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $text-light;
+    }
+  }
+
+  .formations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+
+    .formation-card {
+      background: $white;
+      border-radius: $border-radius;
+      padding: 2rem;
+      box-shadow: $shadow;
+      transition: $transition;
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: $shadow-hover;
+      }
+
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        background: $gradient-primary;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+
+        i {
+          font-size: 1.8rem;
+          color: $white;
+        }
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        color: $primary-dark;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: $text-light;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .card-footer {
+        .info {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 1rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid #e2e8f0;
+
+          .duration, .price {
+            font-size: 0.85rem;
+            color: $text-light;
+
+            i {
+              margin-right: 0.5rem;
+              color: $accent;
+            }
+          }
+        }
+
+        .btn-details {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: $accent;
+          text-decoration: none;
+          font-weight: 600;
+          transition: $transition;
+
+          i {
+            transition: $transition;
+          }
+
+          &:hover {
+            gap: 0.8rem;
+            color: $accent-dark;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ========== ADVANTAGES SECTION ==========
+.advantages-section {
+  padding: 5rem 0;
+  background: $white;
+
+  .advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+
+    .advantage-card {
+      text-align: center;
+      padding: 2rem;
+      transition: $transition;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      i {
+        font-size: 2.5rem;
+        color: $accent;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        font-size: 1.1rem;
+        color: $primary-dark;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+        color: $text-light;
+      }
+    }
+  }
+}
+
+// ========== RESPONSIVE ==========
+@media (max-width: 768px) {
+  .formations-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .advantages-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .ie-hero h1 {
+    font-size: 2rem !important;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .advantages-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ie-hero h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .formation-card {
+    padding: 1.5rem !important;
+  }
+}

@@ -2,82 +2,127 @@
 <app-header></app-header>
 
 <main>
-  <!-- Hero Section avec logo -->
+  <!-- Hero Section avec Carrousel en fond -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
-      <div class="hero-content animate-slide-in-left">
-        <div class="logo-container">
-          <img src="assets/images/logo.png" alt="Focus Supply Training" class="hero-logo">
-        </div>
-        <div class="hero-badge">✨ Excellence & Performance</div>
-        <h1 class="hero-title">
-          Propulsez votre <span class="gradient-text">performance globale</span>
-        </h1>
-        <p class="hero-subtitle">
-          Là où l'efficience opérationnelle rencontre l'excellence humaine.
-        </p>
-        <p class="hero-description">
-          Dans un monde professionnel en constante évolution, nous sommes convaincus que la réussite d'une organisation
-          repose autant sur la qualité des relations humaines que sur la maîtrise opérationnelle.
-        </p>
-        <div class="hero-buttons">
-          <a routerLink="/produits-list" class="btn-primary">
-            <i class="fas fa-graduation-cap"></i>
-            Découvrir nos formations
-          </a>
-          <a href="#contact" class="btn-outline">
-            <i class="fas fa-calendar-alt"></i>
-            Prendre rendez-vous
-          </a>
-        </div>
-
-        <!-- Trust indicators -->
-        <div class="trust-indicators">
-          <div class="indicator">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <span>4.9/5 (250+ avis)</span>
-          </div>
-          <div class="indicator">
-            <i class="fas fa-users"></i>
-            <span>500+ entreprises accompagnées</span>
-          </div>
-          <div class="indicator">
-            <i class="fas fa-trophy"></i>
-            <span>15 ans d'expertise</span>
-          </div>
-        </div>
+    <!-- Contenu Hero (Texte en haut) -->
+    <div class="hero-content-wrapper">
+      <!-- Fond avec motifs et rondelles -->
+      <div class="hero-bg-pattern">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+        <div class="circle circle-4"></div>
       </div>
 
-      <div class="hero-image animate-float">
-        <div class="image-card">
-          <img src="assets/images/image1.jpg" alt="Focus Supply Training" class="hero-img">
-          <div class="floating-card card-1">
-            <i class="fas fa-chart-line"></i>
-            <span>+45% performance</span>
+      <div class="container">
+        <div class="hero-content animate-slide-in-left">
+
+          <!-- Bloc blanc encadré occupant toute la partie -->
+          <div class="hero-white-box-full">
+            <!-- Logo -->
+            <div class="logo-container">
+              <img src="assets/images/logo.png" alt="Focus Supply & Training" class="hero-logo">
+            </div>
+
+            <div class="hero-badge">✨ Excellence & Performance</div>
+
+            <h1 class="hero-title">
+              Propulsez votre <span class="gradient-text">performance globale</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Là où l'efficience opérationnelle rencontre l'excellence humaine.
+            </p>
+
+            <p class="hero-description">
+              Dans un monde professionnel en constante évolution, nous sommes convaincus que la réussite d'une organisation
+              repose autant sur la qualité des relations humaines que sur la maîtrise opérationnelle.
+            </p>
+
+            <div class="hero-buttons">
+              <a routerLink="/produits-list" class="btn-primary">
+                <i class="fas fa-graduation-cap"></i>
+                Découvrir nos formations
+              </a>
+              <a routerLink="/contact" class="btn-outline">
+                <i class="fas fa-calendar-alt"></i>
+                Prendre rendez-vous
+              </a>
+            </div>
+
+            <!-- Trust indicators -->
+            <div class="trust-indicators">
+              <div class="indicator">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span>4.9/5 (250+ avis)</span>
+              </div>
+              <div class="indicator">
+                <i class="fas fa-users"></i>
+                <span>500+ entreprises accompagnées</span>
+              </div>
+              <div class="indicator">
+                <i class="fas fa-trophy"></i>
+                <span>15 ans d'expertise</span>
+              </div>
+            </div>
           </div>
-          <div class="floating-card card-2">
-            <i class="fas fa-heart"></i>
-            <span>Bien-être au travail</span>
-          </div>
+
         </div>
       </div>
     </div>
-  </section>
 
+
+
+    <!-- Carrousel en bas -->
+    <!-- Carrousel horizontal avec 3 images visibles et défilement circulaire -->
+    <div class="hero-carousel-wrapper">
+      <div class="hero-carousel-horizontal">
+        <div class="carousel-container-horizontal">
+          <div class="carousel-track-horizontal"
+               [style.transform]="'translateX(' + getTranslateX() + '%)'"
+               [class.animating]="isAnimating">
+            <div class="carousel-slide-horizontal" *ngFor="let item of carouselItemsInfinite; let i = index">
+              <div class="slide-card">
+                <div class="slide-image" [style.backgroundImage]="'url(' + item.image + ')'"></div>
+                <!--<div class="slide-caption">
+                  <h4>{{ item.title }}</h4>
+                  <p>{{ item.description }}</p>
+                </div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contrôles du carrousel -->
+        <button class="carousel-control-horizontal prev" (click)="prevSlide()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-control-horizontal next" (click)="nextSlide()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Indicateurs -->
+      <div class="carousel-dots-horizontal">
+    <span *ngFor="let item of carouselItems; let i = index"
+          class="dot"
+          [class.active]="i === currentIndex"
+          (click)="goToSlide(i)"></span>
+      </div>
+    </div>
   <!-- Galerie d'images -->
   <section class="gallery">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-badge">Notre Univers</span>
-        <h2>Découvrez Focus Supply Training</h2>
+        <h2>Découvrez Focus Supply & Training</h2>
         <p>Des formations innovantes pour des résultats exceptionnels</p>
       </div>
-      <div class="gallery-grid">
+    <!--  <div class="gallery-grid">
         <div class="gallery-item">
           <img src="assets/images/image1.jpg" alt="Formation en entreprise">
           <div class="gallery-overlay">
@@ -102,7 +147,7 @@
             <span>Ateliers pratiques</span>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </section>
 
@@ -113,10 +158,14 @@
         <div class="about-content animate-fade-in-up">
           <span class="section-badge">À propos</span>
           <h2>Qui sommes-nous ?</h2>
+
           <p>
-            Experts en formation et en optimisation des achats et de l'approvisionnement, nous aidons les entreprises
-            à renforcer durablement leur performance. Notre approche allie développement des compétences,
-            efficacité opérationnelle et valorisation du capital humain pour générer des résultats concrets et pérennes.
+          <p>
+            Experts en formation et en optimisation des achats et de l’approvisionnement, nous aidons les entreprises à renforcer durablement leur performance. Notre approche allie développement des compétences, efficacité opérationnelle et valorisation du capital humain pour générer des résultats concrets et pérennes.
+        </p>
+          <p>
+            Dans un monde professionnel en constante évolution, nous sommes convaincus que la réussite d’une organisation/ entreprise repose autant sur la qualité des relations humaines que sur la maîtrise opérationnelle.
+
           </p>
           <div class="stats-grid">
             <div class="stat" *ngFor="let stat of stats">
@@ -257,7 +306,11 @@
       <div class="section-header text-center">
         <span class="section-badge">Pourquoi nous choisir ?</span>
         <h2>Notre promesse</h2>
-        <p>Allier épanouissement de vos collaborateurs à une efficacité économique mesurable</p>
+        <p>
+          Allier épanouissement de vos collaborateurs à une efficacité économique mesurable.
+          Nous intervenons à vos côtés selon une approche unique : humaine, stratégique et résolument orientée vers les résultats.
+
+        </p>
       </div>
       <div class="why-grid">
         <div class="why-card" *ngFor="let item of whyChooseUs">
@@ -275,7 +328,7 @@
   <section class="cta">
     <div class="container">
       <div class="cta-content">
-        <img src="assets/images/logo.png" alt="Focus Supply Training" class="cta-logo">
+        <img src="assets/images/logo.png" alt="Focus Supply & Training" class="cta-logo">
         <h2>Construisons ensemble votre réussite</h2>
         <p>Nous sommes convaincus que chaque entreprise a le potentiel de devenir à la fois performante et humaine.</p>
         <div class="cta-buttons">
@@ -291,6 +344,5 @@
       </div>
     </div>
   </section>
-</main>
 
 <!-- Footer -->

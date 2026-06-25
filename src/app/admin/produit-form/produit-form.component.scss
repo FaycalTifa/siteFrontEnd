@@ -1,13 +1,20 @@
-// Variables
-$primary: #2c5530;
-$primary-light: #4a7c59;
+// ========== VARIABLES - COULEURS DU LOGO ==========
+$primary-dark: #1a365d;     // Bleu Foncé - Header, titres, fonds principaux
+$primary: #3182ce;           // Bleu Clair - Badges, icônes, accents
+$primary-light: #63b3ed;     // Bleu très clair - Survols, dégradés doux
+$accent: #e67e22;            // ORANGE - Boutons d'action, CTA
+$accent-dark: #d35400;       // Orange foncé - Hover boutons
 $white: #ffffff;
 $gray-bg: #f8f9fa;
 $border-color: #e2e8f0;
 $shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 $border-radius: 16px;
 
-// Overlay
+// Dégradés
+$gradient-primary: linear-gradient(135deg, $primary-dark, $primary);
+$gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
+
+// ========== OVERLAY ==========
 .form-overlay {
   position: fixed;
   top: 0;
@@ -23,7 +30,7 @@ $border-radius: 16px;
   padding: 1rem;
 }
 
-// Container
+// ========== CONTAINER ==========
 .form-container {
   background: $white;
   border-radius: $border-radius;
@@ -43,18 +50,18 @@ $border-radius: 16px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $primary-light;
+    background: $primary;
     border-radius: 4px;
   }
 }
 
-// Header
+// ========== HEADER ==========
 .form-header {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+  background: $gradient-primary;
   color: $white;
   border-radius: $border-radius $border-radius 0 0;
   position: sticky;
@@ -112,12 +119,12 @@ $border-radius: 16px;
   }
 }
 
-// Form
+// ========== FORM ==========
 .produit-form {
   padding: 2rem;
 }
 
-// Sections
+// ========== SECTIONS ==========
 .form-section {
   margin-bottom: 2rem;
   padding-bottom: 1rem;
@@ -142,12 +149,12 @@ $border-radius: 16px;
       margin: 0;
       font-size: 1rem;
       font-weight: 600;
-      color: #333;
+      color: $primary-dark;
     }
   }
 }
 
-// Form row
+// ========== FORM ROW ==========
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -155,7 +162,7 @@ $border-radius: 16px;
   margin-bottom: 0;
 }
 
-// Form group
+// ========== FORM GROUP ==========
 .form-group {
   margin-bottom: 1.25rem;
 
@@ -165,7 +172,7 @@ $border-radius: 16px;
     gap: 0.5rem;
     font-weight: 500;
     font-size: 0.85rem;
-    color: #333;
+    color: $primary-dark;
     margin-bottom: 0.5rem;
 
     i {
@@ -174,7 +181,7 @@ $border-radius: 16px;
     }
 
     .required-star {
-      color: #e74c3c;
+      color: $accent;
       margin-left: 0.2rem;
     }
   }
@@ -195,7 +202,7 @@ $border-radius: 16px;
     }
 
     &.invalid {
-      border-color: #e74c3c;
+      border-color: $accent;
     }
   }
 
@@ -205,12 +212,12 @@ $border-radius: 16px;
   }
 }
 
-// Price input
+// ========== PRICE INPUT ==========
 .price-input {
   position: relative;
 
   input {
-    padding-right: 4rem;
+    padding-right: 5rem;
   }
 
   .currency {
@@ -218,12 +225,13 @@ $border-radius: 16px;
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: #666;
+    color: $primary;
     font-size: 0.8rem;
+    font-weight: 600;
   }
 }
 
-// Character counter
+// ========== CHARACTER COUNTER ==========
 .char-counter {
   text-align: right;
   font-size: 0.7rem;
@@ -231,7 +239,7 @@ $border-radius: 16px;
   margin-top: 0.25rem;
 }
 
-// Field hint
+// ========== FIELD HINT ==========
 .field-hint {
   display: block;
   font-size: 0.7rem;
@@ -239,7 +247,7 @@ $border-radius: 16px;
   margin-top: 0.25rem;
 }
 
-// Upload area
+// ========== UPLOAD AREA ==========
 .upload-container {
   margin-top: 0.25rem;
 }
@@ -261,7 +269,7 @@ $border-radius: 16px;
 
   &:hover {
     border-color: $primary;
-    background: #f0f4f0;
+    background: rgba($primary, 0.05);
   }
 
   &.has-image {
@@ -283,7 +291,7 @@ $border-radius: 16px;
 
   .upload-title {
     font-weight: 600;
-    color: #333;
+    color: $primary-dark;
     margin: 0;
     font-size: 0.9rem;
   }
@@ -313,7 +321,7 @@ $border-radius: 16px;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba($primary-dark, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -333,9 +341,16 @@ $border-radius: 16px;
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
+      color: $primary-dark;
+      transition: all 0.3s;
 
       i {
         margin-right: 0.3rem;
+      }
+
+      &:hover {
+        background: $accent;
+        color: $white;
       }
     }
   }
@@ -346,21 +361,37 @@ $border-radius: 16px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem;
-  background: #e8f5e9;
+  padding: 0.5rem 0.8rem;
+  background: rgba($accent, 0.1);
   border-radius: 8px;
   font-size: 0.8rem;
+  border-left: 3px solid $accent;
 
   .success {
-    color: #27ae60;
+    color: $accent;
+  }
+
+  .file-details {
+    flex: 1;
+
+    .file-name {
+      font-weight: 500;
+      color: $primary-dark;
+    }
+
+    .file-size {
+      font-size: 0.7rem;
+      color: #888;
+      margin-left: 0.5rem;
+    }
   }
 
   .remove-file {
-    margin-left: auto;
     background: none;
     border: none;
-    color: #e74c3c;
+    color: $accent;
     cursor: pointer;
+    transition: all 0.3s;
 
     &:hover {
       transform: scale(1.1);
@@ -368,9 +399,9 @@ $border-radius: 16px;
   }
 }
 
-// Error message
+// ========== ERROR MESSAGE ==========
 .error-message {
-  color: #e74c3c;
+  color: $accent;
   font-size: 0.7rem;
   margin-top: 0.25rem;
   display: flex;
@@ -379,8 +410,8 @@ $border-radius: 16px;
 }
 
 .error-alert {
-  background: #fee;
-  border-left: 4px solid #e74c3c;
+  background: rgba($accent, 0.1);
+  border-left: 4px solid $accent;
   padding: 0.75rem 1rem;
   margin-bottom: 1.5rem;
   border-radius: 8px;
@@ -388,7 +419,7 @@ $border-radius: 16px;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: #c0392b;
+  color: $accent-dark;
 
   i {
     font-size: 1.1rem;
@@ -400,11 +431,11 @@ $border-radius: 16px;
     border: none;
     font-size: 1.2rem;
     cursor: pointer;
-    color: #c0392b;
+    color: $accent-dark;
   }
 }
 
-// Required note
+// ========== REQUIRED NOTE ==========
 .required-note {
   font-size: 0.7rem;
   color: #888;
@@ -412,12 +443,12 @@ $border-radius: 16px;
   text-align: center;
 
   i {
-    color: #e74c3c;
+    color: $accent;
     font-size: 0.6rem;
   }
 }
 
-// Form actions
+// ========== FORM ACTIONS ==========
 .form-actions {
   display: flex;
   gap: 1rem;
@@ -448,22 +479,24 @@ $border-radius: 16px;
 
     &:hover:not(:disabled) {
       background: #e9ecef;
+      transform: translateY(-2px);
     }
   }
 
   .btn-submit {
-    background: linear-gradient(135deg, $primary, $primary-light);
+    background: $gradient-accent;
     border: none;
     color: $white;
+    box-shadow: 0 2px 5px rgba($accent, 0.3);
 
     &:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba($primary, 0.3);
+      box-shadow: 0 5px 15px rgba($accent, 0.4);
     }
   }
 }
 
-// Loading overlay
+// ========== LOADING OVERLAY ==========
 .loading-overlay {
   position: absolute;
   top: 0;
@@ -480,7 +513,7 @@ $border-radius: 16px;
 
   .spinner {
     font-size: 2rem;
-    color: $primary;
+    color: $accent;
     margin-bottom: 0.5rem;
   }
 
@@ -490,7 +523,7 @@ $border-radius: 16px;
   }
 }
 
-// Success notification
+// ========== SUCCESS NOTIFICATION ==========
 .success-notification {
   position: fixed;
   top: 80px;
@@ -499,7 +532,7 @@ $border-radius: 16px;
   animation: slideIn 0.3s ease-out;
 
   .notification-content {
-    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    background: $gradient-accent;
     color: $white;
     padding: 0.8rem 1.2rem;
     border-radius: 12px;
@@ -521,6 +554,7 @@ $border-radius: 16px;
       border: none;
       color: $white;
       cursor: pointer;
+      transition: all 0.3s;
 
       &:hover {
         transform: scale(1.1);
@@ -540,7 +574,7 @@ $border-radius: 16px;
   }
 }
 
-// Responsive
+// ========== RESPONSIVE ==========
 @media (max-width: 640px) {
   .form-row {
     grid-template-columns: 1fr;
@@ -569,4 +603,32 @@ $border-radius: 16px;
       justify-content: center;
     }
   }
+}
+// Dans produit-form.component.scss
+
+.ckeditor-wrapper {
+  ::ng-deep {
+    .ck-editor__editable {
+      min-height: 150px;
+      border-radius: 10px;
+      font-family: inherit;
+    }
+
+    .ck-toolbar {
+      border-radius: 10px 10px 0 0;
+    }
+
+    .ck-content {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Modifier le compteur de caractères
+.char-counter {
+  text-align: right;
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 0.25rem;
 }

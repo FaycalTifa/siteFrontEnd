@@ -22,33 +22,22 @@ export class ProduitFormComponent implements OnInit, OnDestroy {
   @Input() mode: 'create' | 'edit' = 'create';
   @Input() produit?: Produit;
 
-  // Données du formulaire
+  // Données du formulaire simplifié
   produitData = {
     nom: '',
     description: '',
-    prix: 0,
-    duree: '',
-    categorie: 'Intelligence Émotionnelle',
-    type: 'formation',
-    niveau: 'Débutant',
-    prerequis: '',
-    objectifs: '',
-    programme: '',
-    publicCible: ''
+    categorie: 'Intelligence Émotionnelle'
   };
 
-  // Catégories avec icônes
+  // Catégories
   categories = [
-    { value: 'Intelligence Émotionnelle', label: '🧠 Intelligence Émotionnelle', icon: 'fas fa-brain' },
-    { value: 'Achats & Approvisionnements', label: '📦 Achats & Approvisionnements', icon: 'fas fa-truck' },
-    { value: 'Leadership', label: '👔 Leadership', icon: 'fas fa-crown' },
-    { value: 'Gestion du Stress', label: '😌 Gestion du Stress', icon: 'fas fa-leaf' },
-    { value: 'Communication', label: '💬 Communication', icon: 'fas fa-comments' },
-    { value: 'Négociation', label: '🤝 Négociation', icon: 'fas fa-handshake' }
+    { value: 'Intelligence Émotionnelle', label: '🧠 Intelligence Émotionnelle' },
+    { value: 'Achats & Approvisionnements', label: '📦 Achats & Approvisionnements' },
+    { value: 'Leadership', label: '👔 Leadership' },
+    { value: 'Gestion du Stress', label: '😌 Gestion du Stress' },
+    { value: 'Communication', label: '💬 Communication' },
+    { value: 'Négociation', label: '🤝 Négociation' }
   ];
-
-  niveaux = ['Débutant', 'Intermédiaire', 'Avancé', 'Expert'];
-  types = ['Formation', 'Coaching', 'Atelier', 'Séminaire', 'Consulting'];
 
   // États
   selectedFile: File | null = null;
@@ -76,15 +65,7 @@ export class ProduitFormComponent implements OnInit, OnDestroy {
     this.produitData = {
       nom: '',
       description: '',
-      prix: 0,
-      duree: '',
-      categorie: 'Intelligence Émotionnelle',
-      type: 'formation',
-      niveau: 'Débutant',
-      prerequis: '',
-      objectifs: '',
-      programme: '',
-      publicCible: ''
+      categorie: 'Intelligence Émotionnelle'
     };
   }
 
@@ -98,15 +79,7 @@ export class ProduitFormComponent implements OnInit, OnDestroy {
     this.produitData = {
       nom: this.produit.nom || '',
       description: this.produit.description || '',
-      prix: this.produit.prix || 0,
-      duree: (this.produit as any).duree || '',
-      categorie: this.produit.categorie || 'Intelligence Émotionnelle',
-      type: (this.produit as any).type || 'formation',
-      niveau: (this.produit as any).niveau || 'Débutant',
-      prerequis: (this.produit as any).prerequis || '',
-      objectifs: (this.produit as any).objectifs || '',
-      programme: (this.produit as any).programme || '',
-      publicCible: (this.produit as any).publicCible || ''
+      categorie: this.produit.categorie || 'Intelligence Émotionnelle'
     };
 
     if (this.produit.imageUrl) {
@@ -114,26 +87,16 @@ export class ProduitFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Vérifier si le formulaire est valide
+  // Vérifier si le formulaire est valide (seul le titre est requis)
   isFormValid(): boolean {
-    return (this.produitData.nom?.trim() || '') !== '' &&
-      (this.produitData.description?.trim() || '') !== '' &&
-      this.produitData.prix > 0 &&
-      (this.produitData.duree?.trim() || '') !== '' &&
-      (this.mode === 'edit' || this.selectedFile !== null);
+    return (this.produitData.nom?.trim() || '') !== '';
   }
 
   async onSubmit(): Promise<void> {
     this.isSubmitted = true;
 
     if (!this.isFormValid()) {
-      let errorMsg = 'Veuillez remplir tous les champs obligatoires :\n';
-      if (!this.produitData.nom?.trim()) errorMsg += '- Titre de la formation\n';
-      if (!this.produitData.description?.trim()) errorMsg += '- Description\n';
-      if (this.produitData.prix <= 0) errorMsg += '- Prix valide\n';
-      if (!this.produitData.duree?.trim()) errorMsg += '- Durée\n';
-      if (this.mode === 'create' && !this.selectedFile) errorMsg += '- Image\n';
-      this.showMessage(errorMsg, false);
+      this.showMessage('Le titre de la formation est obligatoire', false);
       return;
     }
 
@@ -184,24 +147,23 @@ export class ProduitFormComponent implements OnInit, OnDestroy {
   }
 
   private async createFormation(): Promise<any> {
-    if (!this.selectedFile) {
-      throw new Error('Aucune image sélectionnée');
-    }
-
     const formData = new FormData();
     formData.append('nom', this.produitData.nom);
-    formData.append('description', this.produitData.description);
-    formData.append('prix', this.produitData.prix.toString());
+    formData.append('description', this.produitData.description || '');
+    formData.append('prix', '0');
     formData.append('categorie', this.produitData.categorie);
     formData.append('quantiteStock', '10');
-    formData.append('duree', this.produitData.duree);
-    formData.append('type', this.produitData.type);
-    formData.append('niveau', this.produitData.niveau);
-    formData.append('prerequis', this.produitData.prerequis || '');
-    formData.append('objectifs', this.produitData.objectifs || '');
-    formData.append('programme', this.produitData.programme || '');
-    formData.append('publicCible', this.produitData.publicCible || '');
-    formData.append('image', this.selectedFile);
+    formData.append('duree', '');
+    formData.append('type', 'formation');
+    formData.append('niveau', 'Débutant');
+    formData.append('prerequis', '');
+    formData.append('objectifs', '');
+    formData.append('programme', '');
+    formData.append('publicCible', '');
+
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    }
 
     return await lastValueFrom(
       this.produitService.createProduitWithImage(formData)
@@ -298,24 +260,15 @@ export class ProduitFormComponent implements OnInit, OnDestroy {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   }
 
-  // CORRECTION DE LA MÉTHODE hasUnsavedChanges
   private hasUnsavedChanges(): boolean {
-    const nom = this.produitData.nom ?? '';
-    const description = this.produitData.description ?? '';
-    const duree = this.produitData.duree ?? '';
-
-    return nom.trim() !== '' ||
-      description.trim() !== '' ||
-      this.produitData.prix !== 0 ||
-      duree.trim() !== '' ||
+    return (this.produitData.nom?.trim() || '') !== '' ||
+      (this.produitData.description?.trim() || '') !== '' ||
       this.selectedFile !== null;
   }
 
-  // CORRECTION DE LA MÉTHODE onCancel
   onCancel(): void {
     if (this.isLoading) return;
 
-    // Vérifier si des modifications ont été faites
     const hasChanges = this.hasUnsavedChanges();
 
     if (hasChanges && this.mode === 'create') {
@@ -325,9 +278,7 @@ export class ProduitFormComponent implements OnInit, OnDestroy {
       if (!confirmClose) return;
     }
 
-    // Émettre l'événement d'annulation
     this.cancelForm.emit();
-    // Rediriger vers la liste
     this.router.navigate(['/produits-list']);
   }
 
@@ -380,10 +331,5 @@ export class ProduitFormComponent implements OnInit, OnDestroy {
       return this.mode === 'edit' ? 'Mise à jour...' : 'Enregistrement...';
     }
     return this.mode === 'edit' ? 'Mettre à jour' : 'Publier la formation';
-  }
-
-  getCategoryIcon(categoryValue: string): string {
-    const cat = this.categories.find(c => c.value === categoryValue);
-    return cat?.icon || 'fas fa-graduation-cap';
   }
 }
