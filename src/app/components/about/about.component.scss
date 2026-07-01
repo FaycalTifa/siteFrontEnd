@@ -745,7 +745,7 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
     .cta-logo {
       max-width: 120px;
       margin-bottom: 1.5rem;
-      filter: brightness(0) invert(1);
+     // filter: brightness(0) invert(1);
       display: inline-block;
     }
 

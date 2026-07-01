@@ -101,8 +101,7 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
   background: $gradient-primary;
   padding-top: 80px;
 
-  // Contenu texte en haut
-  // ========== HERO CONTENT WRAPPER - STYLE CONTACT ==========
+  // ========== HERO CONTENT WRAPPER ==========
   .hero-content-wrapper {
     position: relative;
     background: $gradient-primary;
@@ -110,8 +109,8 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
     overflow: hidden;
     flex: 0 0 auto;
 
-    // Motif de fond avec rondelles
-    .hero-bg-pattern {
+    // Motif de fond avec rondelles dynamiques blancs
+  /*  .hero-bg-pattern {
       position: absolute;
       top: 0;
       left: 0;
@@ -123,6 +122,7 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
         position: absolute;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.03);
+        will-change: transform;
 
         &.circle-1 {
           width: 350px;
@@ -130,6 +130,7 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
           top: -100px;
           right: -80px;
           background: rgba(255, 255, 255, 0.04);
+          animation: floatCircle1 12s ease-in-out infinite;
         }
 
         &.circle-2 {
@@ -138,6 +139,7 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
           bottom: -50px;
           left: -60px;
           background: rgba(255, 255, 255, 0.03);
+          animation: floatCircle2 15s ease-in-out infinite;
         }
 
         &.circle-3 {
@@ -146,6 +148,7 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
           top: 40%;
           right: 20%;
           background: rgba(255, 255, 255, 0.02);
+          animation: floatCircle3 18s ease-in-out infinite;
         }
 
         &.circle-4 {
@@ -154,10 +157,209 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
           bottom: 30%;
           left: 10%;
           background: rgba(255, 255, 255, 0.03);
-          animation: float 6s ease-in-out infinite;
+          animation: floatCircle4 10s ease-in-out infinite;
+        }
+
+        &.circle-5 {
+          width: 80px;
+          height: 80px;
+          top: 10%;
+          left: 30%;
+          background: rgba(255, 255, 255, 0.02);
+          animation: floatCircle5 14s ease-in-out infinite;
+        }
+
+        &.circle-6 {
+          width: 120px;
+          height: 120px;
+          bottom: 10%;
+          right: 30%;
+          background: rgba(255, 255, 255, 0.025);
+          animation: floatCircle6 16s ease-in-out infinite;
+        }
+
+        &.circle-7 {
+          width: 60px;
+          height: 60px;
+          top: 60%;
+          left: 15%;
+          background: rgba(255, 255, 255, 0.03);
+          animation: floatCircle7 11s ease-in-out infinite;
+        }
+
+        &.circle-8 {
+          width: 180px;
+          height: 180px;
+          top: 5%;
+          left: 40%;
+          background: rgba(255, 255, 255, 0.015);
+          animation: floatCircle8 20s ease-in-out infinite;
+        }
+
+        &.circle-9 {
+          width: 90px;
+          height: 90px;
+          bottom: 10%;
+          left: 30%;
+          background: rgba(255, 255, 255, 0.025);
+          animation: floatCircle9 13s ease-in-out infinite;
+        }
+
+        &.circle-10 {
+          width: 70px;
+          height: 70px;
+          top: 30%;
+          right: 8%;
+          background: rgba(255, 255, 255, 0.035);
+          animation: floatCircle10 17s ease-in-out infinite;
+        }
+
+        &.circle-11 {
+          width: 50px;
+          height: 50px;
+          top: 75%;
+          right: 20%;
+          background: rgba(255, 255, 255, 0.03);
+          animation: floatCircle11 9s ease-in-out infinite;
+        }
+
+        &.circle-12 {
+          width: 130px;
+          height: 130px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: rgba(255, 255, 255, 0.01);
+          animation: floatCircle12 22s ease-in-out infinite;
+        }
+      }
+    }*/
+
+    .hero-bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        will-change: transform;
+
+        &.circle-1 {
+          width: 350px;
+          height: 350px;
+          top: -100px;
+          right: -80px;
+          background: radial-gradient(circle, rgba($accent, 0.35), rgba($accent, 0.05));
+          animation: floatCircle1 12s ease-in-out infinite;
+        }
+
+        &.circle-2 {
+          width: 200px;
+          height: 200px;
+          bottom: -50px;
+          left: -60px;
+          background: radial-gradient(circle, rgba($accent, 0.30), rgba($accent, 0.05));
+          animation: floatCircle2 15s ease-in-out infinite;
+        }
+
+        &.circle-3 {
+          width: 150px;
+          height: 150px;
+          top: 40%;
+          right: 20%;
+          background: radial-gradient(circle, rgba($accent, 0.25), rgba($accent, 0.03));
+          animation: floatCircle3 18s ease-in-out infinite;
+        }
+
+        &.circle-4 {
+          width: 100px;
+          height: 100px;
+          bottom: 30%;
+          left: 10%;
+          background: radial-gradient(circle, rgba($accent, 0.35), rgba($accent, 0.05));
+          animation: floatCircle4 10s ease-in-out infinite;
+        }
+
+        &.circle-5 {
+          width: 80px;
+          height: 80px;
+          top: 10%;
+          left: 30%;
+          background: radial-gradient(circle, rgba($accent, 0.25), rgba($accent, 0.03));
+          animation: floatCircle5 14s ease-in-out infinite;
+        }
+
+        &.circle-6 {
+          width: 120px;
+          height: 120px;
+          bottom: 10%;
+          right: 30%;
+          background: radial-gradient(circle, rgba($accent, 0.30), rgba($accent, 0.05));
+          animation: floatCircle6 16s ease-in-out infinite;
+        }
+
+        &.circle-7 {
+          width: 60px;
+          height: 60px;
+          top: 60%;
+          left: 15%;
+          background: radial-gradient(circle, rgba($accent, 0.40), rgba($accent, 0.08));
+          animation: floatCircle7 11s ease-in-out infinite;
+        }
+
+        &.circle-8 {
+          width: 180px;
+          height: 180px;
+          top: 5%;
+          left: 40%;
+          background: radial-gradient(circle, rgba($accent, 0.20), rgba($accent, 0.03));
+          animation: floatCircle8 20s ease-in-out infinite;
+        }
+
+        &.circle-9 {
+          width: 90px;
+          height: 90px;
+          bottom: 10%;
+          left: 30%;
+          background: radial-gradient(circle, rgba($accent, 0.30), rgba($accent, 0.05));
+          animation: floatCircle9 13s ease-in-out infinite;
+        }
+
+        &.circle-10 {
+          width: 70px;
+          height: 70px;
+          top: 30%;
+          right: 8%;
+          background: radial-gradient(circle, rgba($accent, 0.45), rgba($accent, 0.08));
+          animation: floatCircle10 17s ease-in-out infinite;
+        }
+
+        &.circle-11 {
+          width: 50px;
+          height: 50px;
+          top: 75%;
+          right: 20%;
+          background: radial-gradient(circle, rgba($accent, 0.35), rgba($accent, 0.05));
+          animation: floatCircle11 9s ease-in-out infinite;
+        }
+
+        &.circle-12 {
+          width: 130px;
+          height: 130px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: radial-gradient(circle, rgba($accent, 0.20), rgba($accent, 0.03));
+          animation: floatCircle12 22s ease-in-out infinite;
         }
       }
     }
+
+
 
     .container {
       position: relative;
@@ -300,13 +502,81 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
     }
   }
 
-  // Animation pour les rondelles
-  @keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-15px) scale(1.05); }
+  // ========== ANIMATIONS DES RONDELLES ==========
+  @keyframes floatCircle1 {
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    25% { transform: translate(-40px, -30px) scale(1.1) rotate(90deg); }
+    50% { transform: translate(20px, -50px) scale(0.95) rotate(180deg); }
+    75% { transform: translate(-30px, 20px) scale(1.05) rotate(270deg); }
   }
 
-  // Responsive
+  @keyframes floatCircle2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, -20px) scale(1.15); }
+    66% { transform: translate(-30px, 30px) scale(0.9); }
+  }
+
+  @keyframes floatCircle3 {
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    50% { transform: translate(-60px, -40px) scale(1.08) rotate(180deg); }
+  }
+
+  @keyframes floatCircle4 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -20px) scale(0.9); }
+    50% { transform: translate(-20px, 40px) scale(1.1); }
+    75% { transform: translate(40px, 10px) scale(0.95); }
+  }
+
+  @keyframes floatCircle5 {
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    50% { transform: translate(80px, -20px) scale(1.12) rotate(180deg); }
+  }
+
+  @keyframes floatCircle6 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-20px, 30px) scale(0.9); }
+    50% { transform: translate(40px, -10px) scale(1.1); }
+    75% { transform: translate(-10px, -30px) scale(0.95); }
+  }
+
+  @keyframes floatCircle7 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    20% { transform: translate(30px, -25px) scale(1.05); }
+    40% { transform: translate(-20px, 15px) scale(0.95); }
+    60% { transform: translate(40px, 10px) scale(1.1); }
+    80% { transform: translate(-30px, -20px) scale(0.9); }
+  }
+
+  @keyframes floatCircle8 {
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    33% { transform: translate(-70px, -30px) scale(1.05) rotate(120deg); }
+    66% { transform: translate(50px, -50px) scale(0.95) rotate(240deg); }
+  }
+
+  @keyframes floatCircle9 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-40px, -30px) scale(1.08); }
+  }
+
+  @keyframes floatCircle10 {
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    50% { transform: translate(60px, -40px) scale(1.1) rotate(180deg); }
+  }
+
+  @keyframes floatCircle11 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(20px, -15px) scale(0.9); }
+    50% { transform: translate(-15px, 20px) scale(1.1); }
+    75% { transform: translate(25px, 10px) scale(0.95); }
+  }
+
+  @keyframes floatCircle12 {
+    0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) scale(1.3) rotate(180deg); }
+  }
+
+  // ========== RESPONSIVE HERO CONTENT ==========
   @media (max-width: 768px) {
     .hero-content-wrapper {
       padding: 2rem 0 4rem;
@@ -334,29 +604,18 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
 
       .hero-bg-pattern {
         .circle {
-          &.circle-1 {
-            width: 200px;
-            height: 200px;
-            top: -50px;
-            right: -40px;
-          }
-
-          &.circle-2 {
-            width: 120px;
-            height: 120px;
-            bottom: -30px;
-            left: -30px;
-          }
-
-          &.circle-3 {
-            width: 80px;
-            height: 80px;
-          }
-
-          &.circle-4 {
-            width: 60px;
-            height: 60px;
-          }
+          &.circle-1 { width: 200px; height: 200px; top: -50px; right: -40px; }
+          &.circle-2 { width: 120px; height: 120px; bottom: -30px; left: -30px; }
+          &.circle-3 { width: 80px; height: 80px; }
+          &.circle-4 { width: 60px; height: 60px; }
+          &.circle-5 { width: 50px; height: 50px; }
+          &.circle-6 { width: 70px; height: 70px; }
+          &.circle-7 { width: 40px; height: 40px; }
+          &.circle-8 { width: 100px; height: 100px; }
+          &.circle-9 { width: 50px; height: 50px; }
+          &.circle-10 { width: 45px; height: 45px; }
+          &.circle-11 { width: 35px; height: 35px; }
+          &.circle-12 { width: 70px; height: 70px; }
         }
       }
     }
@@ -368,15 +627,30 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
         .hero-title {
           font-size: 1.5rem;
         }
-
         .hero-logo {
           max-width: 120px;
         }
       }
+      .hero-bg-pattern {
+        .circle {
+          &.circle-1 { width: 150px; height: 150px; }
+          &.circle-2 { width: 80px; height: 80px; }
+          &.circle-3 { width: 60px; height: 60px; }
+          &.circle-4 { width: 45px; height: 45px; }
+          &.circle-5 { width: 35px; height: 35px; }
+          &.circle-6 { width: 50px; height: 50px; }
+          &.circle-7 { width: 30px; height: 30px; }
+          &.circle-8 { width: 70px; height: 70px; }
+          &.circle-9 { width: 35px; height: 35px; }
+          &.circle-10 { width: 30px; height: 30px; }
+          &.circle-11 { width: 25px; height: 25px; }
+          &.circle-12 { width: 50px; height: 50px; }
+        }
+      }
     }
   }
-  // ========== CARROUSEL HORIZONTAL (4 IMAGES VISIBLES) ==========
-  // ========== CARROUSEL HORIZONTAL - VERSION GRAND FORMAT ==========
+
+  // ========== CARROUSEL HORIZONTAL ==========
   .hero-carousel-wrapper {
     width: 100%;
     flex: 1 0 auto;
@@ -388,7 +662,7 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
   .hero-carousel-horizontal {
     position: relative;
     width: 100%;
-    max-width: 1600px;  /* Augmenté à 1600px */
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 70px;
   }
@@ -402,7 +676,7 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
   .carousel-track-horizontal {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-    gap: 2rem;  /* Espacement plus grand entre les cartes */
+    gap: 2rem;
   }
 
   .carousel-slide-horizontal {
@@ -423,17 +697,15 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
       &:hover {
         transform: translateY(-15px) scale(1.02);
         box-shadow: $shadow-hover;
-
         .slide-image {
           transform: scale(1.08);
         }
       }
     }
 
-    // IMAGE GRAND FORMAT
     .slide-image {
       width: 100%;
-      height: 450px;  /* Très grande image */
+      height: 450px;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -461,7 +733,6 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
     }
   }
 
-  // Contrôles plus grands
   .carousel-control-horizontal {
     position: absolute;
     top: 50%;
@@ -488,16 +759,10 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
       transform: translateY(-50%) scale(1.1);
     }
 
-    &.prev {
-      left: 0;
-    }
-
-    &.next {
-      right: 0;
-    }
+    &.prev { left: 0; }
+    &.next { right: 0; }
   }
 
-  // Indicateurs plus grands
   .carousel-dots-horizontal {
     display: flex;
     justify-content: center;
@@ -524,15 +789,10 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
     }
   }
 
-  // Responsive
+  // Responsive Carrousel
   @media (max-width: 1200px) {
-    .hero-carousel-horizontal {
-      max-width: 1400px;
-    }
-
-    .carousel-slide-horizontal .slide-image {
-      height: 380px;
-    }
+    .hero-carousel-horizontal { max-width: 1400px; }
+    .carousel-slide-horizontal .slide-image { height: 380px; }
   }
 
   @media (max-width: 1024px) {
@@ -540,133 +800,40 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
       flex: 0 0 calc(50% - 1rem);
       min-width: calc(50% - 1rem);
     }
-
-    .carousel-slide-horizontal .slide-image {
-      height: 320px;
-    }
-
+    .carousel-slide-horizontal .slide-image { height: 320px; }
     .carousel-slide-horizontal .slide-caption {
-      h4 {
-        font-size: 1.1rem;
-      }
-
-      p {
-        font-size: 0.9rem;
-      }
+      h4 { font-size: 1.1rem; }
+      p { font-size: 0.9rem; }
     }
   }
 
   @media (max-width: 768px) {
-    .hero-carousel-horizontal {
-      padding: 0 40px;
-    }
-
+    .hero-carousel-horizontal { padding: 0 40px; }
     .carousel-slide-horizontal {
       flex: 0 0 100%;
       min-width: 100%;
     }
-
-    .carousel-slide-horizontal .slide-image {
-      height: 350px;
-    }
-
+    .carousel-slide-horizontal .slide-image { height: 350px; }
     .carousel-control-horizontal {
       width: 40px;
       height: 40px;
-
-      i {
-        font-size: 1.2rem;
-      }
+      i { font-size: 1.2rem; }
     }
   }
 
   @media (max-width: 480px) {
-    .hero-carousel-horizontal {
-      padding: 0 30px;
-    }
-
-    .carousel-slide-horizontal .slide-image {
-      height: 280px;
-    }
-
+    .hero-carousel-horizontal { padding: 0 30px; }
+    .carousel-slide-horizontal .slide-image { height: 280px; }
     .carousel-slide-horizontal .slide-caption {
       padding: 1rem;
-
-      h4 {
-        font-size: 1rem;
-      }
-
-      p {
-        font-size: 0.85rem;
-      }
+      h4 { font-size: 1rem; }
+      p { font-size: 0.85rem; }
     }
-
     .carousel-control-horizontal {
       width: 35px;
       height: 35px;
-
-      i {
-        font-size: 1rem;
-      }
+      i { font-size: 1rem; }
     }
-  }
-
-
-
-// ========== RESPONSIVE CARROUSEL ==========
-@media (max-width: 1024px) {
-  .carousel-slide-horizontal {
-    flex: 0 0 calc(33.33% - 1rem) !important;
-    min-width: calc(33.33% - 1rem) !important;
-  }
-
-  .hero-carousel-horizontal {
-    padding: 0 50px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .carousel-slide-horizontal {
-    flex: 0 0 calc(50% - 0.75rem) !important;
-    min-width: calc(50% - 0.75rem) !important;
-  }
-
-  .hero-carousel-horizontal {
-    padding: 0 40px !important;
-  }
-
-  .carousel-control-horizontal {
-    width: 35px !important;
-    height: 35px !important;
-
-    i {
-      font-size: 0.9rem !important;
-    }
-  }
-
-  .slide-image {
-    height: 150px !important;
-  }
-
-  .slide-caption {
-    h4 {
-      font-size: 0.9rem !important;
-    }
-
-    p {
-      font-size: 0.7rem !important;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-slide-horizontal {
-    flex: 0 0 100% !important;
-    min-width: 100% !important;
-  }
-
-  .hero-carousel-horizontal {
-    padding: 0 30px !important;
   }
 }
 
@@ -715,14 +882,8 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
       &:hover {
         transform: translateY(-5px);
         box-shadow: $shadow-hover;
-
-        img {
-          transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-          transform: translateY(0);
-        }
+        img { transform: scale(1.1); }
+        .gallery-overlay { transform: translateY(0); }
       }
     }
   }
@@ -771,18 +932,15 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
 
     .stat {
       text-align: center;
-
       .stat-value {
         font-size: 2rem;
         font-weight: 800;
         color: $accent;
       }
-
       .stat-label {
         font-size: 0.85rem;
         color: $text-light;
       }
-
       .stat-suffix {
         font-size: 0.75rem;
         color: $text-light;
@@ -816,7 +974,6 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
         display: block;
         line-height: 1;
       }
-
       .text {
         font-size: 0.8rem;
       }
@@ -1224,101 +1381,31 @@ $gradient-accent: linear-gradient(135deg, $accent, $accent-dark);
 
 // ========== RESPONSIVE GLOBAL ==========
 @media (max-width: 1024px) {
-  .about-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .expertise-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .approach-content {
-    grid-template-columns: 1fr !important;
-  }
-
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .hero-title {
-    font-size: 2.5rem !important;
-  }
+  .about-grid { grid-template-columns: 1fr !important; }
+  .expertise-grid { grid-template-columns: 1fr !important; }
+  .approach-content { grid-template-columns: 1fr !important; }
+  .why-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .hero-title { font-size: 2.5rem !important; }
 }
 
 @media (max-width: 768px) {
-  .hero {
-    .hero-content {
-      text-align: center;
-    }
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .trust-indicators {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem !important;
-  }
-
-  .values-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .why-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .section-header h2 {
-    font-size: 1.8rem !important;
-  }
-
-  .hero-title {
-    font-size: 2rem !important;
-  }
-
-  .hero-logo {
-    max-width: 120px !important;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .about-image .experience-badge {
-    position: relative;
-    bottom: 0;
-    right: 0;
-    margin-top: 1rem;
-  }
+  .hero .hero-content { text-align: center; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .trust-indicators { flex-direction: column; align-items: center; gap: 0.5rem !important; }
+  .values-grid { grid-template-columns: 1fr !important; }
+  .why-grid { grid-template-columns: 1fr !important; }
+  .gallery-grid { grid-template-columns: 1fr !important; }
+  .stats-grid { grid-template-columns: 1fr !important; }
+  .section-header h2 { font-size: 1.8rem !important; }
+  .hero-title { font-size: 2rem !important; }
+  .hero-logo { max-width: 120px !important; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .about-image .experience-badge { position: relative; bottom: 0; right: 0; margin-top: 1rem; }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.8rem !important;
-  }
-
-  .hero-logo {
-    max-width: 100px !important;
-  }
-
-  .section-header h2 {
-    font-size: 1.5rem !important;
-  }
-}
+  .hero-title { font-size: 1.8rem !important; }
+  .hero-logo { max-width: 100px !important; }
+  .section-header h2 { font-size: 1.5rem !important; }
 }

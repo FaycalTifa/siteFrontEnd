@@ -20,6 +20,11 @@ export class FormationsAchatsComponent implements OnInit {
 
   formations = [
     {
+      title: 'Externalisation des Achats & Supply Chain',
+      description: 'Libérez-vous des contraintes opérationnelles (achat, transport, dédouanement...). Notre équipe prend en charge l\'intégralité de votre supply chain : sourcing, négociations, suivi des commandes et logistique. Résultat : des coûts opérationnels réduits et des flux sécurisés.',
+      icon: 'fas fa-bolt'
+    },
+    {
       title: 'Optimisation des coûts',
       description: 'Techniques avancées pour réduire vos coûts d\'achat',
       icon: 'fas fa-chart-line'
@@ -53,7 +58,8 @@ export class FormationsAchatsComponent implements OnInit {
       title: 'Gagner en flexibilité',
       description: 'Adaptez votre chaîne d\'approvisionnement aux changements',
       icon: 'fas fa-bolt'
-    }
+    } ,
+
   ];
 
   constructor() { }

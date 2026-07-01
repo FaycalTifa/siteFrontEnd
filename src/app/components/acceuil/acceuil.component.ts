@@ -102,6 +102,37 @@ export class AccueilComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.stopCarousel();
+    this.animateCircles();
+  }
+
+  animateCircles(): void {
+    // Attendre que le DOM soit chargé
+    setTimeout(() => {
+      const circles = document.querySelectorAll('.circle');
+
+      circles.forEach((circle, index) => {
+        const element = circle as HTMLElement;
+
+        // Durée aléatoire entre 8 et 25 secondes
+        const duration = 8 + Math.random() * 17;
+
+        // Position aléatoire
+        const x = (Math.random() - 0.5) * 150;
+        const y = (Math.random() - 0.5) * 150;
+
+        // Délai d'animation pour éviter que tout bouge en même temps
+        const delay = index * 0.3;
+
+        // Appliquer les styles
+        element.style.animation = 'none';
+        // Force reflow
+        element.offsetHeight;
+
+        element.style.setProperty('--x', x + 'px');
+        element.style.setProperty('--y', y + 'px');
+        element.style.animation = `floatRandom ${duration}s ease-in-out ${delay}s infinite`;
+      });
+    }, 100);
   }
 
   startCarousel(): void {
